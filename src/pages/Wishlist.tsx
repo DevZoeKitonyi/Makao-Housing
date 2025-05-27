@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { Search, MapPin, Heart, ArrowRight, Trash2, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ThemeToggle } from '@/components/ThemeToggle';
 
 const Wishlist = () => {
   const [wishlistProperties, setWishlistProperties] = useState([
@@ -63,25 +62,24 @@ const Wishlist = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-card shadow-sm border-b">
+      <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="flex items-center space-x-2">
               <Search className="h-8 w-8 text-blue-600" />
-              <h1 className="text-2xl font-bold text-foreground">PropertyHub</h1>
+              <h1 className="text-2xl font-bold text-gray-900">PropertyHub</h1>
             </Link>
             <nav className="hidden md:flex items-center space-x-8">
-              <Link to="/" className="text-muted-foreground hover:text-blue-600">Home</Link>
-              <Link to="/properties" className="text-muted-foreground hover:text-blue-600">Properties</Link>
-              <Link to="/about" className="text-muted-foreground hover:text-blue-600">About</Link>
-              <Link to="/services" className="text-muted-foreground hover:text-blue-600">Services</Link>
-              <Link to="/blog" className="text-muted-foreground hover:text-blue-600">Blog</Link>
-              <Link to="/contact" className="text-muted-foreground hover:text-blue-600">Contact</Link>
+              <Link to="/" className="text-gray-700 hover:text-blue-600">Home</Link>
+              <Link to="/properties" className="text-gray-700 hover:text-blue-600">Properties</Link>
+              <Link to="/about" className="text-gray-700 hover:text-blue-600">About</Link>
+              <Link to="/services" className="text-gray-700 hover:text-blue-600">Services</Link>
+              <Link to="/blog" className="text-gray-700 hover:text-blue-600">Blog</Link>
+              <Link to="/contact" className="text-gray-700 hover:text-blue-600">Contact</Link>
             </nav>
             <div className="flex items-center space-x-4">
-              <ThemeToggle />
               <Link to="/login">
                 <Button variant="outline">Login</Button>
               </Link>
@@ -98,8 +96,8 @@ const Wishlist = () => {
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-3xl font-bold text-foreground mb-2">My Wishlist</h2>
-              <p className="text-muted-foreground">
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">My Wishlist</h2>
+              <p className="text-gray-600">
                 {wishlistProperties.length} {wishlistProperties.length === 1 ? 'property' : 'properties'} saved
               </p>
             </div>
@@ -114,9 +112,9 @@ const Wishlist = () => {
         {/* Wishlist Content */}
         {wishlistProperties.length === 0 ? (
           <div className="text-center py-16">
-            <Heart className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-foreground mb-2">Your wishlist is empty</h3>
-            <p className="text-muted-foreground mb-6">
+            <Heart className="h-16 w-16 text-gray-300 mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">Your wishlist is empty</h3>
+            <p className="text-gray-600 mb-6">
               Start adding properties to your wishlist to keep track of your favorites
             </p>
             <Link to="/properties">
@@ -210,7 +208,7 @@ const Wishlist = () => {
 
         {/* Quick Actions */}
         {wishlistProperties.length > 0 && (
-          <div className="mt-12 bg-card rounded-lg shadow-sm p-6">
+          <div className="mt-12 bg-white rounded-lg shadow-sm p-6">
             <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
             <div className="flex flex-wrap gap-4">
               <Button variant="outline">
