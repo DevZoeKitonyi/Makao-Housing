@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home, Calendar, User, ArrowRight, Search } from 'lucide-react';
@@ -21,8 +20,8 @@ const Blog = () => {
     },
     {
       id: 2,
-      title: 'How to Maximize Your Property's Rental Value',
-      excerpt: 'As a landlord, getting the best return on your investment is crucial. Learn about improvements and strategies that can increase your property's rental value.',
+      title: 'How to Maximize Your Property\'s Rental Value',
+      excerpt: 'As a landlord, getting the best return on your investment is crucial. Learn about improvements and strategies that can increase your property\'s rental value.',
       author: 'John Smith',
       date: '2024-05-05',
       category: 'For Landlords',
