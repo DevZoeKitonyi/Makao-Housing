@@ -22,6 +22,7 @@ import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
 import SubscriptionPayment from "./pages/SubscriptionPayment";
+import Wishlist from "./pages/Wishlist";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/rent-payment" element={<RentPayment />} />
           <Route path="/subscription-payment" element={<SubscriptionPayment />} />
           <Route path="/receipt" element={<Receipt />} />
+          <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
