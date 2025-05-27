@@ -14,6 +14,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Payment from "./pages/Payment";
+import RentPayment from "./pages/RentPayment";
 import Receipt from "./pages/Receipt";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/rent-payment" element={<RentPayment />} />
           <Route path="/subscription-payment" element={<SubscriptionPayment />} />
           <Route path="/receipt" element={<Receipt />} />
           <Route path="/about" element={<About />} />
