@@ -20,6 +20,7 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
+import SubscriptionPayment from "./pages/SubscriptionPayment";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/subscription-payment" element={<SubscriptionPayment />} />
           <Route path="/receipt" element={<Receipt />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
