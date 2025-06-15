@@ -1,9 +1,9 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home, Search, Users, FileImage, Briefcase, ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import MakaoNav from '@/components/MakaoNav';
 
 const kenyanColors = {
   main: 'text-green-700',
@@ -65,25 +65,8 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link to="/" className="flex items-center space-x-2">
-              <Home className="h-8 w-8 text-black" />
-              <h1 className="text-2xl font-bold text-black">Makao</h1>
-            </Link>
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link to="/" className="text-gray-700 hover:text-red-700">Home</Link>
-              <Link to="/properties" className="text-gray-700 hover:text-red-700">Properties</Link>
-              <Link to="/about" className="text-gray-700 hover:text-red-700">About</Link>
-              <Link to="/services" className="text-red-700 font-medium">Services</Link>
-              <Link to="/blog" className="text-gray-700 hover:text-red-700">Blog</Link>
-              <Link to="/contact" className="text-gray-700 hover:text-red-700">Contact</Link>
-            </nav>
-          </div>
-        </div>
-      </header>
+      {/* Kenyan Themed Navigation */}
+      <MakaoNav />
 
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-r from-black via-red-700 to-green-700">
@@ -395,5 +378,3 @@ const Services = () => {
 };
 
 export default Services;
-
-// ... end of file
