@@ -13,6 +13,7 @@ import TenantModal from '@/components/TenantModal';
 import DashboardNotifications from "./DashboardNotifications";
 import DashboardTenants from "./DashboardTenants";
 import DashboardProperties from "./DashboardProperties";
+import MakaoFooter from "@/components/MakaoFooter";
 
 const Dashboard = () => {
   const [userType] = useState('landlord');
@@ -451,125 +452,128 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-green-50 to-red-50">
-      {/* Sidebar */}
-      <div className="w-64 bg-white shadow-sm hidden md:block">
-        <div className="p-6 border-b border-green-100 bg-gradient-to-r from-green-50 to-red-50">
-          <Link to="/" className="flex items-center space-x-2">
-            <Home className="h-6 w-6 text-green-700" />
-            <h1 className="text-lg font-bold text-red-700 font-mono tracking-wide">Makao</h1>
-          </Link>
-        </div>
-        <nav className="p-4">
-          <ul className="space-y-2">
-            {sidebarLinks.map(link => (
-              <li key={link.to}>
-                <Link
-                  to={link.to}
-                  className={`flex items-center space-x-2 p-2 rounded-md ${
-                    window.location.pathname === link.to
-                      ? "bg-green-100 text-green-800 font-bold"
-                      : "hover:bg-green-50 text-gray-800"
-                  }`}
-                >
-                  <span>{link.label}</span>
+    <>
+      <div className="flex min-h-screen bg-gradient-to-br from-green-50 to-red-50">
+        {/* Sidebar */}
+        <div className="w-64 bg-white shadow-sm hidden md:block">
+          <div className="p-6 border-b border-green-100 bg-gradient-to-r from-green-50 to-red-50">
+            <Link to="/" className="flex items-center space-x-2">
+              <Home className="h-6 w-6 text-green-700" />
+              <h1 className="text-lg font-bold text-red-700 font-mono tracking-wide">Makao</h1>
+            </Link>
+          </div>
+          <nav className="p-4">
+            <ul className="space-y-2">
+              {sidebarLinks.map(link => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    className={`flex items-center space-x-2 p-2 rounded-md ${
+                      window.location.pathname === link.to
+                        ? "bg-green-100 text-green-800 font-bold"
+                        : "hover:bg-green-50 text-gray-800"
+                    }`}
+                  >
+                    <span>{link.label}</span>
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link to="/wishlist" className="flex items-center space-x-2 p-2 rounded-md hover:bg-green-50 text-gray-800">
+                  <Heart className="h-5 w-5" />
+                  <span>Wishlist</span>
                 </Link>
               </li>
-            ))}
-            <li>
-              <Link to="/wishlist" className="flex items-center space-x-2 p-2 rounded-md hover:bg-green-50 text-gray-800">
-                <Heart className="h-5 w-5" />
-                <span>Wishlist</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/subscription-payment" className="flex items-center space-x-2 p-2 rounded-md hover:bg-green-50 text-gray-800">
-                <DollarSign className="h-5 w-5" />
-                <span>Subscription</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/notifications" className="flex items-center space-x-2 p-2 rounded-md hover:bg-green-50 text-gray-800">
-                <Bell className="h-5 w-5" />
-                <span>Notifications</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/dashboard/settings" className="flex items-center space-x-2 p-2 rounded-md hover:bg-green-50 text-gray-800">
-                <Settings className="h-5 w-5" />
-                <span>Settings</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/logout" className="flex items-center space-x-2 p-2 rounded-md hover:bg-red-50 text-red-700">
-                <LogOut className="h-5 w-5" />
-                <span>Logout</span>
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      {/* Main Content */}
-      <div className="flex-1 overflow-y-auto">
-        <div className="p-4 md:p-6 pb-20 md:pb-6">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl md:text-2xl font-bold text-green-700 font-mono">Makao Dashboard</h2>
-            <div className="flex items-center space-x-4">
-              <div className="text-right hidden sm:block">
-                <p className="text-sm text-gray-700">Welcome back,</p>
-                <p className="font-semibold text-red-700">
-                  {userType === 'landlord' ? 'John Smith' : 'Sarah Johnson'}
-                </p>
-              </div>
-              <div className="w-10 h-10 bg-green-700 rounded-full flex items-center justify-center text-white font-semibold border-2 border-red-700">
-                {userType === 'landlord' ? 'JS' : 'SJ'}
+              <li>
+                <Link to="/subscription-payment" className="flex items-center space-x-2 p-2 rounded-md hover:bg-green-50 text-gray-800">
+                  <DollarSign className="h-5 w-5" />
+                  <span>Subscription</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/notifications" className="flex items-center space-x-2 p-2 rounded-md hover:bg-green-50 text-gray-800">
+                  <Bell className="h-5 w-5" />
+                  <span>Notifications</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/settings" className="flex items-center space-x-2 p-2 rounded-md hover:bg-green-50 text-gray-800">
+                  <Settings className="h-5 w-5" />
+                  <span>Settings</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/logout" className="flex items-center space-x-2 p-2 rounded-md hover:bg-red-50 text-red-700">
+                  <LogOut className="h-5 w-5" />
+                  <span>Logout</span>
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        {/* Main Content */}
+        <div className="flex-1 overflow-y-auto">
+          <div className="p-4 md:p-6 pb-20 md:pb-6">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-xl md:text-2xl font-bold text-green-700 font-mono">Makao Dashboard</h2>
+              <div className="flex items-center space-x-4">
+                <div className="text-right hidden sm:block">
+                  <p className="text-sm text-gray-700">Welcome back,</p>
+                  <p className="font-semibold text-red-700">
+                    {userType === 'landlord' ? 'John Smith' : 'Sarah Johnson'}
+                  </p>
+                </div>
+                <div className="w-10 h-10 bg-green-700 rounded-full flex items-center justify-center text-white font-semibold border-2 border-red-700">
+                  {userType === 'landlord' ? 'JS' : 'SJ'}
+                </div>
               </div>
             </div>
+            <Routes>
+              <Route path="" element={
+                <Tabs defaultValue="overview">
+                  <TabsList className="mb-6">
+                    <TabsTrigger value="overview">Overview</TabsTrigger>
+                    <TabsTrigger value="properties">Properties</TabsTrigger>
+                    <TabsTrigger value="tenants">Tenants</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="overview">
+                    <LandlordDashboard />
+                  </TabsContent>
+                  <TabsContent value="properties">
+                    <LandlordDashboard /> {/* You may swap this for something else or link to DashboardProperties */}
+                  </TabsContent>
+                  <TabsContent value="tenants">
+                    <TenantsTab />
+                  </TabsContent>
+                </Tabs>
+              } />
+              <Route path="notifications" element={<React.Suspense fallback={<div>Loading...</div>}><DashboardNotifications /></React.Suspense>} />
+              <Route path="tenants" element={<React.Suspense fallback={<div>Loading...</div>}><DashboardTenants /></React.Suspense>} />
+              <Route path="properties" element={<React.Suspense fallback={<div>Loading...</div>}><DashboardProperties /></React.Suspense>} />
+            </Routes>
+            {/* ... keep modals as appropriate ... */}
           </div>
-          <Routes>
-            <Route path="" element={
-              <Tabs defaultValue="overview">
-                <TabsList className="mb-6">
-                  <TabsTrigger value="overview">Overview</TabsTrigger>
-                  <TabsTrigger value="properties">Properties</TabsTrigger>
-                  <TabsTrigger value="tenants">Tenants</TabsTrigger>
-                </TabsList>
-                <TabsContent value="overview">
-                  <LandlordDashboard />
-                </TabsContent>
-                <TabsContent value="properties">
-                  <LandlordDashboard /> {/* You may swap this for something else or link to DashboardProperties */}
-                </TabsContent>
-                <TabsContent value="tenants">
-                  <TenantsTab />
-                </TabsContent>
-              </Tabs>
-            } />
-            <Route path="notifications" element={<React.Suspense fallback={<div>Loading...</div>}><DashboardNotifications /></React.Suspense>} />
-            <Route path="tenants" element={<React.Suspense fallback={<div>Loading...</div>}><DashboardTenants /></React.Suspense>} />
-            <Route path="properties" element={<React.Suspense fallback={<div>Loading...</div>}><DashboardProperties /></React.Suspense>} />
-          </Routes>
-          {/* ... keep modals as appropriate ... */}
         </div>
-      </div>
-      {/* Modals */}
-      <PropertyModal
-        property={propertyModal.property}
-        isOpen={propertyModal.isOpen}
-        onClose={closePropertyModal}
-        mode={propertyModal.mode as any}
-        onSave={(property) => {
-          console.log('Saving property:', property);
-          closePropertyModal();
-        }}
-      />
+        {/* Modals */}
+        <PropertyModal
+          property={propertyModal.property}
+          isOpen={propertyModal.isOpen}
+          onClose={closePropertyModal}
+          mode={propertyModal.mode as any}
+          onSave={(property) => {
+            console.log('Saving property:', property);
+            closePropertyModal();
+          }}
+        />
 
-      <TenantModal
-        tenant={tenantModal.tenant}
-        isOpen={tenantModal.isOpen}
-        onClose={closeTenantModal}
-      />
-    </div>
+        <TenantModal
+          tenant={tenantModal.tenant}
+          isOpen={tenantModal.isOpen}
+          onClose={closeTenantModal}
+        />
+      </div>
+      <MakaoFooter />
+    </>
   );
 };
 
