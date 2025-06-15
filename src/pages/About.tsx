@@ -1,9 +1,26 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import MakaoHeader from "@/components/MakaoHeader";
 import MakaoSectionHeader from "@/components/MakaoSectionHeader";
 import { Button } from "@/components/ui/button";
+import MakaoNav from "@/components/MakaoNav";
+
+// Kenyan hero section theme
+const AboutHero = () => (
+  <section className="relative bg-gradient-to-r from-black via-red-700 to-green-700 text-white py-20 px-4">
+    <div className="max-w-4xl mx-auto text-center">
+      <h2 className="text-4xl md:text-6xl font-bold mb-6 font-sans">
+        About Makao
+      </h2>
+      <p className="text-xl md:text-2xl mb-4">
+        Empowering Kenyans to find the perfect home and manage rentals hassle-free.
+      </p>
+      <p className="hidden md:block max-w-2xl mx-auto text-lg text-white/90">
+        Built by Kenyans, for Kenya. Safe, transparent and easy rental—join our community today!
+      </p>
+    </div>
+  </section>
+);
 
 const FounderCard = () => (
   <div className="bg-green-50 rounded-lg shadow p-6 text-center">
@@ -24,7 +41,9 @@ const FounderCard = () => (
 
 const About = () => (
   <div className="min-h-screen bg-gray-50 pb-16">
-    <MakaoHeader />
+    <MakaoNav />
+    <AboutHero />
+
     <section className="max-w-3xl mx-auto px-4 py-10">
       <MakaoSectionHeader
         title="About Makao"

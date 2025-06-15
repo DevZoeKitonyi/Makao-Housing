@@ -8,6 +8,7 @@ import { Slider } from '@/components/ui/slider';
 import { Link } from 'react-router-dom';
 import PropertyCard from '@/components/PropertyCard';
 import FiltersSidebar from '@/components/FiltersSidebar';
+import MakaoNav from '@/components/MakaoNav';
 
 const Properties = () => {
   const [showFilters, setShowFilters] = useState(false);
@@ -79,57 +80,39 @@ const Properties = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link to="/" className="flex items-center space-x-2">
-              <Search className="h-8 w-8 text-green-700" />
-              <h1 className="text-2xl font-bold text-gray-900">Makao</h1>
-            </Link>
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link to="/" className="text-gray-700 hover:text-green-700">Home</Link>
-              <Link to="/properties" className="text-green-700 font-medium">Properties</Link>
-              <Link to="/about" className="text-gray-700 hover:text-green-700">About</Link>
-              <Link to="/services" className="text-gray-700 hover:text-green-700">Services</Link>
-              <Link to="/blog" className="text-gray-700 hover:text-green-700">Blog</Link>
-              <Link to="/contact" className="text-gray-700 hover:text-green-700">Contact</Link>
-            </nav>
-            <div className="flex items-center space-x-4">
-              <Link to="/login">
-                <Button variant="outline" className="border-green-700 text-green-700">Login</Button>
-              </Link>
-              <Link to="/register">
-                <Button className="bg-green-700 hover:bg-green-800 text-white">Register</Button>
-              </Link>
+      <MakaoNav />
+      {/* Hero: copy landing style */}
+      <section className="relative bg-gradient-to-r from-black via-red-700 to-green-700 text-white pt-12 pb-16">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 font-sans">
+            Explore Properties Across Kenya
+          </h2>
+          <p className="text-xl mb-8">Find the best apartments, villas and more—trusted by Kenyans</p>
+          {/* Search bar */}
+          <div className="max-w-4xl mx-auto bg-white rounded-lg p-6 shadow-xl">
+            <div className="flex flex-col md:flex-row gap-4 items-center">
+              <div className="flex-1 relative w-full">
+                <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <Input 
+                  placeholder="Search by location, property type, or keywords..." 
+                  className="pl-10 text-gray-900"
+                />
+              </div>
+              <Button 
+                variant="outline" 
+                onClick={() => setShowFilters(!showFilters)}
+                className="flex items-center gap-2 border-green-700 text-green-700"
+              >
+                <Filter className="h-4 w-4" />
+                Filters
+              </Button>
+              <Button className="bg-red-700 hover:bg-green-700 text-white">Search Properties</Button>
             </div>
           </div>
         </div>
-      </header>
-
+      </section>
+      {/* Main content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Search and Filter Bar */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-          <div className="flex flex-col md:flex-row gap-4 items-center">
-            <div className="flex-1 relative">
-              <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-              <Input 
-                placeholder="Search by location, property type, or keywords..." 
-                className="pl-10"
-              />
-            </div>
-            <Button 
-              variant="outline" 
-              onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center gap-2 border-green-700 text-green-700"
-            >
-              <Filter className="h-4 w-4" />
-              Filters
-            </Button>
-            <Button className="bg-green-700 text-white hover:bg-green-800">Search Properties</Button>
-          </div>
-        </div>
-
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Filters Sidebar */}
           <FiltersSidebar show={showFilters} priceRange={priceRange} setPriceRange={setPriceRange} />
@@ -137,10 +120,10 @@ const Properties = () => {
           {/* Properties Grid */}
           <div className="flex-1">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-bold text-gray-900">
+              <h2 className="text-2xl font-bold text-black">
                 {properties.length} Properties Found
               </h2>
-              <select className="border border-gray-300 rounded-md px-3 py-2">
+              <select className="border border-green-700 rounded-md px-3 py-2 text-gray-900">
                 <option>Sort by: Featured</option>
                 <option>Price: Low to High</option>
                 <option>Price: High to Low</option>
