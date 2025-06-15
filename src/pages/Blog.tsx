@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { MakaoHeader } from "@/components/MakaoHeader";
+import MakaoHeader from "@/components/MakaoHeader";
 import MakaoSectionHeader from "@/components/MakaoSectionHeader";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
