@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Home, Plus, Heart, Users, BarChart, Settings, LogOut, Edit, Trash2, Eye, DollarSign, AlertCircle, Bell } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { 
+  Home, Plus, Heart, Users, BarChart, Settings, LogOut, Edit, Trash2, Eye, DollarSign, AlertCircle, Bell 
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -13,6 +15,7 @@ const Dashboard = () => {
   const [userType] = useState('landlord');
   const [propertyModal, setPropertyModal] = useState({ isOpen: false, property: null, mode: 'view' });
   const [tenantModal, setTenantModal] = useState({ isOpen: false, tenant: null });
+  const navigate = useNavigate();
 
   // Mock data
   const landlordProperties = [
@@ -126,31 +129,54 @@ const Dashboard = () => {
   const LandlordDashboard = () => (
     <div className="space-y-6">
       {/* Stats Cards */}
+      {/* Updated Kenyan-inspired accent for Makao */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <Card>
           <CardContent className="p-6">
-            <div className="text-2xl font-bold text-blue-600">15</div>
-            <p className="text-gray-600">Total Properties</p>
+            <div className="text-2xl font-bold text-[#007e3a]">15</div>
+            <p className="text-gray-700 font-semibold">Total Properties</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="p-6">
-            <div className="text-2xl font-bold text-green-600">12</div>
-            <p className="text-gray-600">Rented</p>
+            <div className="text-2xl font-bold text-[#ff7418]">12</div>
+            <p className="text-gray-700 font-semibold">Rented</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="p-6">
-            <div className="text-2xl font-bold text-orange-600">3</div>
-            <p className="text-gray-600">Available</p>
+            <div className="text-2xl font-bold text-[#d72638]">3</div>
+            <p className="text-gray-700 font-semibold">Available</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="p-6">
-            <div className="text-2xl font-bold text-purple-600">47</div>
-            <p className="text-gray-600">Total Inquiries</p>
+            <div className="text-2xl font-bold text-[#0057b8]">47</div>
+            <p className="text-gray-700 font-semibold">Total Inquiries</p>
           </CardContent>
         </Card>
+      </div>
+
+      {/* Quick Actions Navigation */}
+      <div className="grid grid-cols-2 md:grid-cols-6 gap-3 mb-2">
+        <Button className="w-full bg-green-700 hover:bg-red-700" onClick={() => navigate('/payment')}>
+          <DollarSign className="h-4 w-4 mr-2" /> Payment
+        </Button>
+        <Button className="w-full bg-green-700 hover:bg-red-700" onClick={() => navigate('/rent-payment')}>
+          <DollarSign className="h-4 w-4 mr-2" /> Rent Payment
+        </Button>
+        <Button className="w-full bg-green-700 hover:bg-red-700" onClick={() => navigate('/subscription-payment')}>
+          <DollarSign className="h-4 w-4 mr-2" /> Subscription
+        </Button>
+        <Button className="w-full bg-green-700 hover:bg-red-700" onClick={() => navigate('/notifications')}>
+          <Bell className="h-4 w-4 mr-2" /> Notifications
+        </Button>
+        <Button className="w-full bg-green-700 hover:bg-red-700" onClick={() => navigate('/wishlist')}>
+          <Heart className="h-4 w-4 mr-2" /> Wishlist
+        </Button>
+        <Button className="w-full bg-green-700 hover:bg-red-700" onClick={() => navigate('/properties')}>
+          <Home className="h-4 w-4 mr-2" /> Browse Properties
+        </Button>
       </div>
 
       {/* Properties Management */}
@@ -413,68 +439,61 @@ const Dashboard = () => {
   );
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gradient-to-br from-green-50 to-red-50">
       {/* Sidebar */}
       <div className="w-64 bg-white shadow-sm hidden md:block">
-        <div className="p-6 border-b">
+        <div className="p-6 border-b border-green-100 bg-gradient-to-r from-green-50 to-red-50">
           <Link to="/" className="flex items-center space-x-2">
-            <Home className="h-6 w-6 text-blue-600" />
-            <h1 className="text-lg font-bold text-gray-900">PropertyHub</h1>
+            <Home className="h-6 w-6 text-green-700" />
+            <h1 className="text-lg font-bold text-red-700 font-mono tracking-wide">Makao</h1>
           </Link>
         </div>
         <nav className="p-4">
           <ul className="space-y-2">
             <li>
-              <Link to="/dashboard" className="flex items-center space-x-2 p-2 rounded-md bg-blue-50 text-blue-700">
+              <Link to="/dashboard" className="flex items-center space-x-2 p-2 rounded-md bg-green-100 text-green-800 font-bold">
                 <BarChart className="h-5 w-5" />
                 <span>Dashboard</span>
               </Link>
             </li>
-            {userType === 'landlord' ? (
-              <>
-                <li>
-                  <Link to="/dashboard/properties" className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100 text-gray-700">
-                    <Home className="h-5 w-5" />
-                    <span>My Properties</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/dashboard/tenants" className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100 text-gray-700">
-                    <Users className="h-5 w-5" />
-                    <span>Tenants</span>
-                  </Link>
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <Link to="/notifications" className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100 text-gray-700">
-                    <Bell className="h-5 w-5" />
-                    <span>Notifications</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/dashboard/wishlist" className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100 text-gray-700">
-                    <Heart className="h-5 w-5" />
-                    <span>Wishlist</span>
-                  </Link>
-                </li>
-              </>
-            )}
             <li>
-              <Link to="/subscription-payment" className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100 text-gray-700">
+              <Link to="/dashboard/properties" className="flex items-center space-x-2 p-2 rounded-md hover:bg-green-50 text-gray-800">
+                <Home className="h-5 w-5" />
+                <span>My Properties</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/dashboard/tenants" className="flex items-center space-x-2 p-2 rounded-md hover:bg-green-50 text-gray-800">
+                <Users className="h-5 w-5" />
+                <span>Tenants</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/wishlist" className="flex items-center space-x-2 p-2 rounded-md hover:bg-green-50 text-gray-800">
+                <Heart className="h-5 w-5" />
+                <span>Wishlist</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/subscription-payment" className="flex items-center space-x-2 p-2 rounded-md hover:bg-green-50 text-gray-800">
                 <DollarSign className="h-5 w-5" />
                 <span>Subscription</span>
               </Link>
             </li>
             <li>
-              <Link to="/dashboard/settings" className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100 text-gray-700">
+              <Link to="/notifications" className="flex items-center space-x-2 p-2 rounded-md hover:bg-green-50 text-gray-800">
+                <Bell className="h-5 w-5" />
+                <span>Notifications</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/dashboard/settings" className="flex items-center space-x-2 p-2 rounded-md hover:bg-green-50 text-gray-800">
                 <Settings className="h-5 w-5" />
                 <span>Settings</span>
               </Link>
             </li>
             <li>
-              <Link to="/logout" className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100 text-gray-700">
+              <Link to="/logout" className="flex items-center space-x-2 p-2 rounded-md hover:bg-red-50 text-red-700">
                 <LogOut className="h-5 w-5" />
                 <span>Logout</span>
               </Link>
@@ -487,17 +506,15 @@ const Dashboard = () => {
       <div className="flex-1 overflow-y-auto">
         <div className="p-4 md:p-6 pb-20 md:pb-6">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl md:text-2xl font-bold text-gray-900">
-              Dashboard
-            </h2>
+            <h2 className="text-xl md:text-2xl font-bold text-green-700 font-mono">Makao Dashboard</h2>
             <div className="flex items-center space-x-4">
               <div className="text-right hidden sm:block">
-                <p className="text-sm text-gray-600">Welcome back,</p>
-                <p className="font-semibold">
+                <p className="text-sm text-gray-700">Welcome back,</p>
+                <p className="font-semibold text-red-700">
                   {userType === 'landlord' ? 'John Smith' : 'Sarah Johnson'}
                 </p>
               </div>
-              <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
+              <div className="w-10 h-10 bg-green-700 rounded-full flex items-center justify-center text-white font-semibold border-2 border-red-700">
                 {userType === 'landlord' ? 'JS' : 'SJ'}
               </div>
             </div>
