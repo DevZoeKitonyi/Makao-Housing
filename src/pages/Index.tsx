@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Search, MapPin, Home, Users, Star, ArrowRight } from 'lucide-react';
@@ -90,10 +89,10 @@ const Index = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h2 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in font-sans">
-                Tafuta Makao Yako Kamili
+                Discover Your Perfect Home
               </h2>
               <p className="text-xl md:text-2xl mb-8 text-white">
-                Gundua nyumba bora katika maeneo maarufu Kenya
+                Find the best houses in Kenya's top locations
               </p>
               {/* Quick Search Bar */}
               <div className="max-w-4xl mx-auto bg-white rounded-lg p-6 shadow-xl">
@@ -101,19 +100,19 @@ const Index = () => {
                   <div className="relative">
                     <MapPin className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                     <Input 
-                      placeholder="Mahali (e.g. Nairobi, Kisumu, Mombasa)" 
+                      placeholder="Location (e.g. Nairobi, Kisumu, Mombasa)" 
                       className="pl-10 text-gray-900"
                     />
                   </div>
                   <select className="px-4 py-2 border border-green-700 rounded-md text-gray-900">
-                    <option>Aina ya Nyumba</option>
+                    <option>House Type</option>
                     <option>Apartment</option>
                     <option>Bungalow</option>
                     <option>Studio</option>
                     <option>Villa</option>
                   </select>
                   <select className="px-4 py-2 border border-green-700 rounded-md text-gray-900">
-                    <option>Bajeti</option>
+                    <option>Budget</option>
                     <option>Ksh 100,000 - 200,000</option>
                     <option>Ksh 200,000 - 300,000</option>
                     <option>Ksh 300,000 - 500,000</option>
@@ -135,8 +134,8 @@ const Index = () => {
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h3 className="text-3xl font-bold text-black mb-4">Nyumba Zilizochaguliwa</h3>
-              <p className="text-lg text-gray-600">Majumba ya kipekee yanayovutia</p>
+              <h3 className="text-3xl font-bold text-black mb-4">Featured Properties</h3>
+              <p className="text-lg text-gray-600">Explore a curated selection of exceptional homes</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -165,7 +164,7 @@ const Index = () => {
                     </div>
                     <div className="flex items-center justify-between mb-4">
                       <span className="text-sm text-gray-600">
-                        {property.bedrooms} vyumba vya kulala • {property.bathrooms} bafu
+                        {property.bedrooms} bedrooms • {property.bathrooms} bathrooms
                       </span>
                     </div>
                     <div className="flex flex-wrap gap-2 mb-4">
@@ -177,7 +176,7 @@ const Index = () => {
                     </div>
                     <Link to={`/property/${property.id}`}>
                       <Button className="w-full bg-black hover:bg-green-700 text-white">
-                        Tazama Maelezo
+                        View Details
                         <ArrowRight className="h-4 w-4 ml-2" />
                       </Button>
                     </Link>
@@ -189,7 +188,7 @@ const Index = () => {
             <div className="text-center mt-12">
               <Link to="/properties">
                 <Button size="lg" variant="outline" className="border-green-700 text-green-700 hover:bg-green-50">
-                  Nyumba Zote
+                  View All Properties
                   <ArrowRight className="h-4 w-4 ml-2" />
                 </Button>
               </Link>
@@ -205,19 +204,19 @@ const Index = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div>
                 <div className="text-4xl font-bold text-green-700 mb-2">500+</div>
-                <div className="text-gray-600">Majumba Yaliyosajiliwa</div>
+                <div className="text-gray-600">Listed Properties</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-green-700 mb-2">1,200+</div>
-                <div className="text-gray-600">Wapangaji Wenye Furaha</div>
+                <div className="text-gray-600">Happy Tenants</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-green-700 mb-2">300+</div>
-                <div className="text-gray-600">Wamiliki Waliothibitishwa</div>
+                <div className="text-gray-600">Verified Landlords</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-green-700 mb-2">50+</div>
-                <div className="text-gray-600">Miji Iliyojumuishwa</div>
+                <div className="text-gray-600">Cities Covered</div>
               </div>
             </div>
           </div>
@@ -234,7 +233,7 @@ const Index = () => {
                 <h3 className="text-xl font-bold">Makao</h3>
               </div>
               <p className="text-gray-400">
-                Rafiki yako wa kweli katika kupata makao bora nchini Kenya.
+                Your trusted companion for finding the best homes in Kenya.
               </p>
             </div>
             <div>
@@ -266,7 +265,7 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t border-green-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Makao. Haki zote zimehifadhiwa.</p>
+            <p>&copy; 2024 Makao. All rights reserved.</p>
           </div>
         </div>
       </footer>
@@ -275,4 +274,3 @@ const Index = () => {
 };
 
 export default Index;
-
