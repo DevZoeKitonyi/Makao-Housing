@@ -166,32 +166,32 @@ const Dashboard = () => {
         <CardContent>
           <div className="space-y-4">
             {landlordProperties.map((property) => (
-              <div key={property.id} className="flex items-center justify-between p-4 border rounded-lg">
-                <div className="flex items-center space-x-4">
+              <div key={property.id} className="flex flex-col md:flex-row md:items-center justify-between p-4 border rounded-lg space-y-4 md:space-y-0">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
                   <img 
                     src={property.image} 
                     alt={property.title}
-                    className="w-16 h-16 object-cover rounded"
+                    className="w-full sm:w-16 h-32 sm:h-16 object-cover rounded"
                   />
-                  <div>
-                    <h4 className="font-semibold">{property.title}</h4>
-                    <p className="text-gray-600">{property.location}</p>
-                    <p className="text-blue-600 font-medium">${property.price}/month</p>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-semibold text-sm md:text-base break-words">{property.title}</h4>
+                    <p className="text-gray-600 text-xs md:text-sm break-words">{property.location}</p>
+                    <p className="text-blue-600 font-medium text-sm md:text-base">${property.price}/month</p>
                   </div>
                 </div>
-                <div className="flex items-center space-x-4">
+                <div className="flex flex-row md:flex-row items-center justify-between md:justify-end space-x-4 w-full md:w-auto">
                   <div className="text-center">
                     <div className="text-lg font-bold text-orange-600">{property.interested}</div>
                     <p className="text-xs text-gray-600">Interested</p>
                   </div>
-                  <span className={`px-2 py-1 rounded text-sm ${
+                  <span className={`px-2 py-1 rounded text-xs md:text-sm whitespace-nowrap ${
                     property.status === 'Available' 
                       ? 'bg-green-100 text-green-800'
                       : 'bg-blue-100 text-blue-800'
                   }`}>
                     {property.status}
                   </span>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-1 md:space-x-2">
                     <Button variant="ghost" size="sm" onClick={() => openPropertyModal(property, 'view')}>
                       <Eye className="h-4 w-4" />
                     </Button>
@@ -432,13 +432,13 @@ const Dashboard = () => {
 
       {/* Main Content */}
       <div className="flex-1 overflow-y-auto">
-        <div className="p-6">
+        <div className="p-4 md:p-6 pb-20 md:pb-6">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">
+            <h2 className="text-xl md:text-2xl font-bold text-gray-900">
               Dashboard
             </h2>
             <div className="flex items-center space-x-4">
-              <div className="text-right">
+              <div className="text-right hidden sm:block">
                 <p className="text-sm text-gray-600">Welcome back,</p>
                 <p className="font-semibold">
                   {userType === 'landlord' ? 'John Smith' : 'Sarah Johnson'}
