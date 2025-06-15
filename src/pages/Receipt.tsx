@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home, Download, CheckCircle, Calendar } from 'lucide-react';
@@ -7,6 +8,7 @@ import { Separator } from '@/components/ui/separator';
 import ReceiptInfoSection from "@/components/ReceiptInfoSection";
 import MakaoHeader from "@/components/MakaoHeader";
 import MakaoFooter from "@/components/MakaoFooter";
+import MakaoNav from "@/components/MakaoNav";
 
 const Receipt = () => {
   // Mock property and payment data
@@ -52,8 +54,11 @@ const Receipt = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-6 sm:py-12 flex flex-col">
-      <div className="flex-1 max-w-4xl mx-auto px-2 sm:px-4 lg:px-8 relative w-full">
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      {/* Navigation at the top, like other pages */}
+      <MakaoNav />
+
+      <div className="flex-1 flex flex-col w-full max-w-4xl mx-auto px-2 sm:px-4 lg:px-8 py-6 sm:py-12 relative">
         {/* Header */}
         <div className="mb-8 text-center">
           <MakaoHeader />
@@ -192,7 +197,7 @@ const Receipt = () => {
           </div>
         </div>
       </div>
-      {/* Add MakaoFooter at bottom */}
+      {/* Footer always at the bottom */}
       <MakaoFooter />
     </div>
   );
