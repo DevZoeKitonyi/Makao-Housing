@@ -58,6 +58,33 @@ const Dashboard = () => {
         </aside>
         <main className="flex-1 px-2 sm:px-4 py-4 sm:py-6 overflow-x-auto w-full">
           <div className="max-w-full mx-auto">
+            {/* Dashboard Welcome and Quick Stats */}
+            {location.pathname === "/dashboard" && (
+              <div className="mb-8">
+                <div className="rounded-lg bg-gradient-to-r from-green-100 via-green-50 to-white border border-green-100 p-6 mb-6">
+                  <h1 className="text-2xl sm:text-3xl font-bold text-green-800 mb-2 flex items-center gap-2">
+                    <Home className="w-7 h-7" /> Welcome to your Makao Dashboard!
+                  </h1>
+                  <p className="text-gray-700 mb-2">
+                    Use the menu on the left to navigate to Properties, Tenants, or Notifications. Your stats at a glance:
+                  </p>
+                  <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
+                      <div className="text-gray-500 text-xs mb-1">Properties</div>
+                      <div className="text-xl font-bold text-green-700">2</div>
+                    </div>
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
+                      <div className="text-gray-500 text-xs mb-1">Tenants</div>
+                      <div className="text-xl font-bold text-blue-700">2</div>
+                    </div>
+                    <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
+                      <div className="text-gray-500 text-xs mb-1">Notifications</div>
+                      <div className="text-xl font-bold text-red-700">3</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
             <Outlet />
           </div>
         </main>
