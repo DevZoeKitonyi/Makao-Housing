@@ -10,6 +10,7 @@ const navLinks = [
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
   { to: "/contact", label: "Contact" },
+  { to: "/notifications", label: "Notifications" }, // Added Notifications to nav
 ];
 
 const MakaoNav = () => {

@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import ReceiptInfoSection from "@/components/ReceiptInfoSection";
 import MakaoHeader from "@/components/MakaoHeader";
+import MakaoFooter from "@/components/MakaoFooter";
 
 const Receipt = () => {
   // Mock property and payment data
@@ -51,8 +52,8 @@ const Receipt = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 py-12 flex flex-col">
+      <div className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8 text-center">
           <MakaoHeader />
@@ -191,6 +192,8 @@ const Receipt = () => {
           </div>
         </div>
       </div>
+      {/* Add MakaoFooter at bottom */}
+      <MakaoFooter />
     </div>
   );
 };

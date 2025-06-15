@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Home, CreditCard, Shield, ChevronRight } from 'lucide-react';
+import { Home, CreditCard, Shield, Check, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
+import MakaoNav from "@/components/MakaoNav";
+import MakaoFooter from "@/components/MakaoFooter";
 
 const Payment = () => {
   const [cardNumber, setCardNumber] = useState('');
@@ -13,302 +15,101 @@ const Payment = () => {
   const [cvv, setCvv] = useState('');
   const [saveCard, setSaveCard] = useState(false);
 
-  // Mock property data
-  const property = {
-    id: 1,
-    title: 'Modern Downtown Apartment',
-    address: '123 Main St, Downtown, City Center',
-    price: 2500,
-    securityDeposit: 2500,
-    applicationFee: 50,
-    image: '/placeholder.svg'
-  };
-
-  const formatCardNumber = (value: string) => {
-    const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-    const matches = v.match(/\d{4,16}/g);
-    const match = matches && matches[0] || '';
-    const parts = [];
-
-    for (let i = 0, len = match.length; i < len; i += 4) {
-      parts.push(match.substring(i, i + 4));
-    }
-
-    if (parts.length) {
-      return parts.join(' ');
-    } else {
-      return value;
-    }
-  };
-
-  const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setCardNumber(formatCardNumber(value));
-  };
-
   const handlePaymentSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle payment submission - in a real app, you'd integrate with a payment processor
-    window.location.href = "/receipt";
+    // Handle payment submission logic here
+    console.log('Payment submitted');
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Desktop Nav */}
-      <header className="bg-white shadow-sm border-b hidden md:block">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <Home className="h-8 w-8 text-green-700" />
-              <h1 className="text-2xl font-bold text-black">Makao</h1>
-              <span className="ml-2 px-2 py-1 rounded bg-green-700 text-white text-xs hidden sm:inline">Inspired by Kenya</span>
-            </div>
-            <nav className="flex items-center space-x-8">
-              <Link to="/" className="text-gray-700 hover:text-red-700">Home</Link>
-              <Link to="/properties" className="text-gray-700 hover:text-red-700">Properties</Link>
-              <Link to="/about" className="text-gray-700 hover:text-red-700">About</Link>
-              <Link to="/services" className="text-gray-700 hover:text-red-700">Services</Link>
-              <Link to="/contact" className="text-gray-700 hover:text-red-700">Contact</Link>
-            </nav>
-            <div className="flex items-center space-x-4">
-              <Link to="/login">
-                <Button variant="outline" className="border-green-700 text-green-700 hover:bg-green-50">Login</Button>
-              </Link>
-              <Link to="/register">
-                <Button className="bg-red-700 hover:bg-green-700 text-white">Register</Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </header>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Payment Form */}
-          <div className="lg:col-span-2">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-green-900">Payment Information</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handlePaymentSubmit} className="space-y-6">
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      <MakaoNav />
+      <div className="flex-1">
+        <div className="max-w-4xl mx-auto px-4 py-12">
+          <Card className="shadow-lg">
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold text-green-700">Payment Details</CardTitle>
+            </CardHeader>
+            <CardContent className="p-6">
+              <form onSubmit={handlePaymentSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="card-number" className="block text-sm font-medium text-green-900 mb-1">
+                    Card Number
+                  </label>
+                  <Input
+                    id="card-number"
+                    type="text"
+                    placeholder="1234 5678 9012 3456"
+                    value={cardNumber}
+                    onChange={(e) => setCardNumber(e.target.value)}
+                    className="w-full"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="card-name" className="block text-sm font-medium text-green-900 mb-1">
+                    Name on Card
+                  </label>
+                  <Input
+                    id="card-name"
+                    type="text"
+                    placeholder="John Doe"
+                    value={cardName}
+                    onChange={(e) => setCardName(e.target.value)}
+                    className="w-full"
+                    required
+                  />
+                </div>
+                <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="card-number" className="block text-sm font-medium text-green-900 mb-1">
-                      Card Number
-                    </label>
-                    <div className="relative">
-                      <Input
-                        id="card-number"
-                        value={cardNumber}
-                        onChange={handleCardNumberChange}
-                        placeholder="1234 5678 9012 3456"
-                        maxLength={19}
-                        className="w-full pl-10"
-                        required
-                      />
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <CreditCard className="h-4 w-4 text-gray-400" />
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="card-name" className="block text-sm font-medium text-green-900 mb-1">
-                      Name on Card
+                    <label htmlFor="exp-date" className="block text-sm font-medium text-green-900 mb-1">
+                      Expiration Date
                     </label>
                     <Input
-                      id="card-name"
-                      value={cardName}
-                      onChange={(e) => setCardName(e.target.value)}
-                      placeholder="John Doe"
+                      id="exp-date"
+                      type="text"
+                      placeholder="MM/YY"
+                      value={expDate}
+                      onChange={(e) => setExpDate(e.target.value)}
                       className="w-full"
                       required
                     />
                   </div>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="exp-date" className="block text-sm font-medium text-green-900 mb-1">
-                        Expiration Date
-                      </label>
-                      <Input
-                        id="exp-date"
-                        value={expDate}
-                        onChange={(e) => setExpDate(e.target.value)}
-                        placeholder="MM/YY"
-                        className="w-full"
-                        maxLength={5}
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="cvv" className="block text-sm font-medium text-green-900 mb-1">
-                        CVV
-                      </label>
-                      <Input
-                        id="cvv"
-                        value={cvv}
-                        onChange={(e) => setCvv(e.target.value)}
-                        placeholder="123"
-                        type="password"
-                        className="w-full"
-                        maxLength={4}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="save-card"
-                      checked={saveCard}
-                      onCheckedChange={(checked) => setSaveCard(checked as boolean)}
-                    />
-                    <label htmlFor="save-card" className="text-sm text-gray-600">
-                      Save card for future payments
-                    </label>
-                  </div>
-
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <div className="flex items-start">
-                      <Shield className="h-6 w-6 text-green-700 mr-3 mt-0.5" />
-                      <p className="text-sm text-gray-600">
-                        <span className="font-semibold text-green-900">Secure Payment:</span> Your payment information is secure. We use encryption to protect your personal and payment details.
-                      </p>
-                    </div>
-                  </div>
-
-                  <Button type="submit" className="w-full bg-red-700 hover:bg-green-700 text-white">
-                    Complete Payment
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Order Summary */}
-          <div>
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-green-900">Payment Summary</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-start space-x-4">
-                  <img 
-                    src={property.image} 
-                    alt={property.title}
-                    className="w-20 h-20 object-cover rounded"
-                  />
                   <div>
-                    <h4 className="font-semibold text-green-900">{property.title}</h4>
-                    <p className="text-sm text-gray-600">{property.address}</p>
+                    <label htmlFor="cvv" className="block text-sm font-medium text-green-900 mb-1">
+                      CVV
+                    </label>
+                    <Input
+                      id="cvv"
+                      type="text"
+                      placeholder="123"
+                      value={cvv}
+                      onChange={(e) => setCvv(e.target.value)}
+                      className="w-full"
+                      required
+                    />
                   </div>
                 </div>
-
-                <div className="pt-4 border-t">
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">First Month's Rent</span>
-                      <span>${property.price.toLocaleString()}.00</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Security Deposit</span>
-                      <span>${property.securityDeposit.toLocaleString()}.00</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Application Fee</span>
-                      <span>${property.applicationFee.toLocaleString()}.00</span>
-                    </div>
-                  </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="save-card" checked={saveCard} onCheckedChange={() => setSaveCard(!saveCard)} />
+                  <label htmlFor="save-card" className="text-sm text-gray-600">
+                    Save card for future payments
+                  </label>
                 </div>
-
-                <div className="pt-4 border-t">
-                  <div className="flex justify-between items-center font-semibold text-lg">
-                    <span>Total</span>
-                    <span className="text-green-800">${(property.price + property.securityDeposit + property.applicationFee).toLocaleString()}.00</span>
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t text-sm text-gray-600">
-                  <p className="mb-2">By completing this payment, you agree to our terms of service.</p>
-                  <p>Need help? <Link to="/contact" className="text-green-700 hover:text-red-700">Contact us</Link></p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
-        {/* Steps Indicator */}
-        <div className="mt-12">
-          <div className="flex items-center justify-center">
-            <div className="flex items-center">
-              <div className="bg-red-700 rounded-full h-8 w-8 flex items-center justify-center text-white">
-                1
-              </div>
-              <div className="ml-2 text-red-700 font-medium">Property Details</div>
-            </div>
-            <ChevronRight className="mx-4 text-gray-400" />
-            <div className="flex items-center">
-              <div className="bg-green-700 rounded-full h-8 w-8 flex items-center justify-center text-white">
-                2
-              </div>
-              <div className="ml-2 text-green-700 font-medium">Payment</div>
-            </div>
-            <ChevronRight className="mx-4 text-gray-400" />
-            <div className="flex items-center">
-              <div className="bg-gray-300 rounded-full h-8 w-8 flex items-center justify-center text-gray-600">
-                3
-              </div>
-              <div className="ml-2 text-gray-600">Confirmation</div>
-            </div>
+                <Button type="submit" className="w-full bg-red-700 hover:bg-green-700 text-white">
+                  Submit Payment
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+          <div className="mt-8 text-center">
+            <Link to="/dashboard" className="text-green-700 hover:underline">
+              Return to Dashboard
+            </Link>
           </div>
         </div>
       </div>
-      {/* Desktop Footer */}
-      <footer className="hidden md:block bg-black text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <Home className="h-8 w-8 text-green-700" />
-                <h3 className="text-xl font-bold">Makao</h3>
-              </div>
-              <p className="text-gray-400">
-                Your trusted companion for finding the best homes in Kenya.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2">
-                <li><Link to="/properties" className="text-gray-400 hover:text-green-400">Properties</Link></li>
-                <li><Link to="/about" className="text-gray-400 hover:text-green-400">About Us</Link></li>
-                <li><Link to="/services" className="text-gray-400 hover:text-green-400">Services</Link></li>
-                <li><Link to="/contact" className="text-gray-400 hover:text-green-400">Contact</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">For Users</h4>
-              <ul className="space-y-2">
-                <li><Link to="/login" className="text-gray-400 hover:text-green-400">Login</Link></li>
-                <li><Link to="/register" className="text-gray-400 hover:text-green-400">Register</Link></li>
-                <li><Link to="/wishlist" className="text-gray-400 hover:text-green-400">Wishlist</Link></li>
-                <li><Link to="/dashboard" className="text-gray-400 hover:text-green-400">Dashboard</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-              <div className="space-y-2 text-gray-400">
-                <p>P.O. Box 1234</p>
-                <p>Nairobi, Kenya</p>
-                <p>Phone: +254 712 345678</p>
-                <p>Email: info@makao.co.ke</p>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-green-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Makao. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <MakaoFooter />
     </div>
   );
 };
