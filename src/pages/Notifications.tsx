@@ -5,6 +5,41 @@ import { Home, Bell, BellOff, Check, X, Calendar, DollarSign, AlertCircle, Clock
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import MakaoHeader from "@/components/MakaoHeader";
+
+// Extracted helper
+function NotificationIcon({ type }: { type: string }) {
+  switch (type) {
+    case 'payment_reminder':
+      return <DollarSign className="h-5 w-5 text-orange-600" />;
+    case 'maintenance':
+      return <AlertCircle className="h-5 w-5 text-blue-600" />;
+    case 'payment_confirmation':
+      return <Check className="h-5 w-5 text-green-600" />;
+    case 'lease_renewal':
+      return <Calendar className="h-5 w-5 text-purple-600" />;
+    default:
+      return <Bell className="h-5 w-5 text-gray-600" />;
+  }
+}
+
+function PriorityBadge({ priority }: { priority: string }) {
+  switch (priority) {
+    case 'high':
+      return <Badge className="bg-red-100 text-red-800">{priority}</Badge>;
+    case 'medium':
+      return <Badge className="bg-yellow-100 text-yellow-800">{priority}</Badge>;
+    case 'low':
+      return <Badge className="bg-green-100 text-green-800">{priority}</Badge>;
+    default:
+      return <Badge className="bg-gray-100 text-gray-800">{priority}</Badge>;
+  }
+}
+
+function formatTimestamp(timestamp: string) {
+  const date = new Date(timestamp);
+  return date.toLocaleDateString() + ' at ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
 
 const Notifications = () => {
   const [notifications, setNotifications] = useState([
@@ -12,7 +47,7 @@ const Notifications = () => {
       id: 1,
       type: 'payment_reminder',
       title: 'Rent Payment Due Soon',
-      message: 'Your rent payment of $2,500 is due on June 1st, 2024. Set up auto-pay to never miss a payment.',
+      message: 'Your rent payment of KSh 25,000 is due on June 1st, 2024. Set up auto-pay to never miss a payment.',
       timestamp: '2024-05-28T10:00:00Z',
       isRead: false,
       priority: 'high',
@@ -36,7 +71,7 @@ const Notifications = () => {
       id: 3,
       type: 'payment_confirmation',
       title: 'Payment Received',
-      message: 'Your rent payment of $2,500 for May 2024 has been successfully processed.',
+      message: 'Your rent payment of KSh 25,000 for May 2024 has been successfully processed.',
       timestamp: '2024-05-01T09:15:00Z',
       isRead: true,
       priority: 'low',
@@ -59,15 +94,15 @@ const Notifications = () => {
   ]);
 
   const markAsRead = (id: number) => {
-    setNotifications(prev => 
-      prev.map(notif => 
+    setNotifications(prev =>
+      prev.map(notif =>
         notif.id === id ? { ...notif, isRead: true } : notif
       )
     );
   };
 
   const markAllAsRead = () => {
-    setNotifications(prev => 
+    setNotifications(prev =>
       prev.map(notif => ({ ...notif, isRead: true }))
     );
   };
@@ -76,71 +111,19 @@ const Notifications = () => {
     setNotifications(prev => prev.filter(notif => notif.id !== id));
   };
 
-  const getNotificationIcon = (type: string) => {
-    switch (type) {
-      case 'payment_reminder':
-        return <DollarSign className="h-5 w-5 text-orange-600" />;
-      case 'maintenance':
-        return <AlertCircle className="h-5 w-5 text-blue-600" />;
-      case 'payment_confirmation':
-        return <Check className="h-5 w-5 text-green-600" />;
-      case 'lease_renewal':
-        return <Calendar className="h-5 w-5 text-purple-600" />;
-      default:
-        return <Bell className="h-5 w-5 text-gray-600" />;
-    }
-  };
-
-  const getPriorityColor = (priority: string) => {
-    switch (priority) {
-      case 'high':
-        return 'bg-red-100 text-red-800';
-      case 'medium':
-        return 'bg-yellow-100 text-yellow-800';
-      case 'low':
-        return 'bg-green-100 text-green-800';
-      default:
-        return 'bg-gray-100 text-gray-800';
-    }
-  };
-
-  const formatTimestamp = (timestamp: string) => {
-    const date = new Date(timestamp);
-    return date.toLocaleDateString() + ' at ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  };
-
   const unreadCount = notifications.filter(n => !n.isRead).length;
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center space-x-4">
-              <Link to="/dashboard" className="flex items-center space-x-2">
-                <Home className="h-6 w-6 text-blue-600" />
-                <span className="text-lg font-bold text-gray-900">PropertyHub</span>
-              </Link>
-              <div className="hidden md:block">
-                <nav className="flex space-x-8">
-                  <Link to="/dashboard" className="text-gray-600 hover:text-gray-900">Dashboard</Link>
-                  <Link to="/notifications" className="text-blue-600 font-medium">Notifications</Link>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <MakaoHeader />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-20 md:pb-8">
         {/* Page Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 space-y-4 sm:space-y-0">
           <div className="flex items-center space-x-3">
-            <Bell className="h-8 w-8 text-blue-600" />
+            <Bell className="h-8 w-8 text-green-700" />
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Notifications</h1>
-              <p className="text-gray-600">Stay updated with important messages from your landlord</p>
+              <h1 className="text-2xl font-bold text-black">Notifications</h1>
+              <p className="text-gray-600">Stay updated with important messages for you</p>
             </div>
           </div>
           <div className="flex items-center space-x-3">
@@ -149,7 +132,7 @@ const Notifications = () => {
                 {unreadCount} unread
               </Badge>
             )}
-            <Button variant="outline" onClick={markAllAsRead} disabled={unreadCount === 0}>
+            <Button variant="outline" onClick={markAllAsRead} disabled={unreadCount === 0} className="border-green-700 text-green-700">
               <Check className="h-4 w-4 mr-2" />
               Mark All Read
             </Button>
@@ -166,7 +149,7 @@ const Notifications = () => {
                   <p className="text-lg font-semibold">June 1st</p>
                 </div>
                 <Link to="/rent-payment">
-                  <Button size="sm">Pay Now</Button>
+                  <Button size="sm" className="bg-green-700 text-white hover:bg-red-700">Pay Now</Button>
                 </Link>
               </div>
             </CardContent>
@@ -179,7 +162,7 @@ const Notifications = () => {
                   <p className="text-lg font-semibold text-red-600">Disabled</p>
                 </div>
                 <Link to="/rent-payment">
-                  <Button variant="outline" size="sm">Setup</Button>
+                  <Button variant="outline" size="sm" className="border-green-700 text-green-700">Setup</Button>
                 </Link>
               </div>
             </CardContent>
@@ -214,23 +197,21 @@ const Notifications = () => {
                   <div
                     key={notification.id}
                     className={`p-4 border rounded-lg ${
-                      notification.isRead ? 'bg-gray-50' : 'bg-white border-blue-200'
+                      notification.isRead ? 'bg-gray-50' : 'bg-white border-green-200'
                     }`}
                   >
                     <div className="flex items-start space-x-4">
                       <div className="flex-shrink-0 mt-1">
-                        {getNotificationIcon(notification.type)}
+                        <NotificationIcon type={notification.type} />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
                             <div className="flex items-center space-x-2 mb-1">
-                              <h3 className={`font-medium ${!notification.isRead ? 'text-gray-900' : 'text-gray-700'}`}>
+                              <h3 className={`font-medium ${!notification.isRead ? 'text-black' : 'text-gray-700'}`}>
                                 {notification.title}
                               </h3>
-                              <Badge className={getPriorityColor(notification.priority)}>
-                                {notification.priority}
-                              </Badge>
+                              <PriorityBadge priority={notification.priority} />
                               {notification.actionRequired && (
                                 <Badge className="bg-orange-100 text-orange-800">
                                   Action Required
@@ -271,17 +252,17 @@ const Notifications = () => {
                             {notification.type === 'payment_reminder' && (
                               <>
                                 <Link to="/rent-payment">
-                                  <Button size="sm">Pay Now</Button>
+                                  <Button size="sm" className="bg-green-700 text-white hover:bg-red-700">Pay Now</Button>
                                 </Link>
                                 <Link to="/rent-payment">
-                                  <Button variant="outline" size="sm">Setup Auto-Pay</Button>
+                                  <Button variant="outline" size="sm" className="border-green-700 text-green-700">Setup Auto-Pay</Button>
                                 </Link>
                               </>
                             )}
                             {notification.type === 'lease_renewal' && (
                               <>
-                                <Button size="sm">Renew Lease</Button>
-                                <Button variant="outline" size="sm">Contact Landlord</Button>
+                                <Button size="sm" className="bg-green-700 text-white hover:bg-red-700">Renew Lease</Button>
+                                <Button variant="outline" size="sm" className="border-green-700 text-green-700">Contact Landlord</Button>
                               </>
                             )}
                           </div>
@@ -300,3 +281,4 @@ const Notifications = () => {
 };
 
 export default Notifications;
+
