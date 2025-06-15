@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home, Search, Users, FileImage, Briefcase, ArrowRight, CheckCircle } from 'lucide-react';
@@ -60,7 +61,7 @@ const Services = () => {
               <Home className="h-8 w-8 text-blue-600" />
               <h1 className="text-2xl font-bold text-gray-900">PropertyHub</h1>
             </Link>
-            <nav className="flex items-center space-x-8">
+            <nav className="hidden md:flex items-center space-x-8">
               <Link to="/" className="text-gray-700 hover:text-blue-600">Home</Link>
               <Link to="/properties" className="text-gray-700 hover:text-blue-600">Properties</Link>
               <Link to="/about" className="text-gray-700 hover:text-blue-600">About</Link>
