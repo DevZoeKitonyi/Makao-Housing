@@ -49,17 +49,16 @@ const SubscriptionPayment = () => {
         {/* Header */}
         <div className="mb-8 text-center">
           <Link to="/" className="inline-flex items-center justify-center space-x-2">
-            <Home className="h-8 w-8 text-black" />
-            <h1 className="text-2xl font-bold text-black">Makao</h1>
+            <Home className="h-8 w-8 text-green-700" />
+            <h1 className="text-2xl font-bold text-green-800">Makao</h1>
           </Link>
-          <h2 className="text-3xl font-bold text-black mt-4">Choose Your Plan</h2>
+          <h2 className="text-3xl font-bold text-green-800 mt-4">Choose Your Plan</h2>
           <p className="text-gray-600 mt-2">Select the perfect plan for your property management needs</p>
         </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Plan Selection */}
           <div>
-            <h3 className="text-xl font-semibold mb-6">Select a Plan</h3>
+            <h3 className="text-xl font-semibold mb-6 text-green-900">Select a Plan</h3>
             <div className="space-y-4">
               {plans.map((plan) => (
                 <Card
@@ -80,7 +79,7 @@ const SubscriptionPayment = () => {
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between mb-4">
                       <div>
-                        <h4 className="text-xl font-bold">{plan.name}</h4>
+                        <h4 className="text-xl font-bold text-green-800">{plan.name}</h4>
                         <div className="text-3xl font-bold text-green-700">
                           ${plan.price}<span className="text-lg text-gray-600">/month</span>
                         </div>
@@ -110,13 +109,12 @@ const SubscriptionPayment = () => {
           <div>
             <Card>
               <CardHeader>
-                <CardTitle>Payment Information</CardTitle>
+                <CardTitle className="text-green-900">Payment Information</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handlePaymentSubmit} className="space-y-6">
-                  {/* ... keep form fields exactly the same but update accent colors ... */}
                   <div>
-                    <label htmlFor="card-number" className="block text-sm font-medium text-black mb-1">
+                    <label htmlFor="card-number" className="block text-sm font-medium text-green-900 mb-1">
                       Card Number
                     </label>
                     <div className="relative">
@@ -134,7 +132,7 @@ const SubscriptionPayment = () => {
                     </div>
                   </div>
                   <div>
-                    <label htmlFor="card-name" className="block text-sm font-medium text-black mb-1">
+                    <label htmlFor="card-name" className="block text-sm font-medium text-green-900 mb-1">
                       Name on Card
                     </label>
                     <Input
@@ -147,7 +145,7 @@ const SubscriptionPayment = () => {
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="exp-date" className="block text-sm font-medium text-black mb-1">
+                      <label htmlFor="exp-date" className="block text-sm font-medium text-green-900 mb-1">
                         Expiration Date
                       </label>
                       <Input
@@ -160,7 +158,7 @@ const SubscriptionPayment = () => {
                       />
                     </div>
                     <div>
-                      <label htmlFor="cvv" className="block text-sm font-medium text-black mb-1">
+                      <label htmlFor="cvv" className="block text-sm font-medium text-green-900 mb-1">
                         CVV
                       </label>
                       <Input
@@ -177,14 +175,14 @@ const SubscriptionPayment = () => {
                   <div className="border-t pt-4">
                     <div className="flex justify-between text-lg font-semibold">
                       <span>Total (Monthly)</span>
-                      <span>${plans.find(p => p.id === selectedPlan)?.price}/month</span>
+                      <span className="text-green-800">${plans.find(p => p.id === selectedPlan)?.price}/month</span>
                     </div>
                   </div>
                   <div className="bg-green-50 p-4 rounded-lg">
                     <div className="flex items-start">
                       <Shield className="h-6 w-6 text-green-700 mr-3 mt-0.5" />
                       <p className="text-sm text-gray-600">
-                        <span className="font-semibold text-black">Secure Payment:</span> Your payment information is encrypted and secure. Cancel anytime.
+                        <span className="font-semibold text-green-900">Secure Payment:</span> Your payment information is encrypted and secure. Cancel anytime.
                       </p>
                     </div>
                   </div>

@@ -59,8 +59,8 @@ const Payment = () => {
         {/* Header */}
         <div className="mb-8 text-center">
           <Link to="/" className="inline-flex items-center justify-center space-x-2">
-            <Home className="h-8 w-8 text-blue-600" />
-            <h1 className="text-2xl font-bold text-gray-900">PropertyHub</h1>
+            <Home className="h-8 w-8 text-green-700" />
+            <h1 className="text-2xl font-bold text-green-800">Makao</h1>
           </Link>
         </div>
 
@@ -69,12 +69,12 @@ const Payment = () => {
           <div className="lg:col-span-2">
             <Card>
               <CardHeader>
-                <CardTitle>Payment Information</CardTitle>
+                <CardTitle className="text-green-900">Payment Information</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handlePaymentSubmit} className="space-y-6">
                   <div>
-                    <label htmlFor="card-number" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="card-number" className="block text-sm font-medium text-green-900 mb-1">
                       Card Number
                     </label>
                     <div className="relative">
@@ -94,7 +94,7 @@ const Payment = () => {
                   </div>
                   
                   <div>
-                    <label htmlFor="card-name" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="card-name" className="block text-sm font-medium text-green-900 mb-1">
                       Name on Card
                     </label>
                     <Input
@@ -109,7 +109,7 @@ const Payment = () => {
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="exp-date" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="exp-date" className="block text-sm font-medium text-green-900 mb-1">
                         Expiration Date
                       </label>
                       <Input
@@ -123,7 +123,7 @@ const Payment = () => {
                       />
                     </div>
                     <div>
-                      <label htmlFor="cvv" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="cvv" className="block text-sm font-medium text-green-900 mb-1">
                         CVV
                       </label>
                       <Input
@@ -150,16 +150,16 @@ const Payment = () => {
                     </label>
                   </div>
 
-                  <div className="bg-blue-50 p-4 rounded-lg">
+                  <div className="bg-green-50 p-4 rounded-lg">
                     <div className="flex items-start">
-                      <Shield className="h-6 w-6 text-blue-600 mr-3 mt-0.5" />
+                      <Shield className="h-6 w-6 text-green-700 mr-3 mt-0.5" />
                       <p className="text-sm text-gray-600">
-                        <span className="font-semibold text-gray-900">Secure Payment:</span> Your payment information is secure. We use encryption to protect your personal and payment details.
+                        <span className="font-semibold text-green-900">Secure Payment:</span> Your payment information is secure. We use encryption to protect your personal and payment details.
                       </p>
                     </div>
                   </div>
 
-                  <Button type="submit" className="w-full">
+                  <Button type="submit" className="w-full bg-red-700 hover:bg-green-700 text-white">
                     Complete Payment
                   </Button>
                 </form>
@@ -171,7 +171,7 @@ const Payment = () => {
           <div>
             <Card>
               <CardHeader>
-                <CardTitle>Payment Summary</CardTitle>
+                <CardTitle className="text-green-900">Payment Summary</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start space-x-4">
@@ -181,7 +181,7 @@ const Payment = () => {
                     className="w-20 h-20 object-cover rounded"
                   />
                   <div>
-                    <h4 className="font-semibold text-gray-900">{property.title}</h4>
+                    <h4 className="font-semibold text-green-900">{property.title}</h4>
                     <p className="text-sm text-gray-600">{property.address}</p>
                   </div>
                 </div>
@@ -206,13 +206,13 @@ const Payment = () => {
                 <div className="pt-4 border-t">
                   <div className="flex justify-between items-center font-semibold text-lg">
                     <span>Total</span>
-                    <span>${(property.price + property.securityDeposit + property.applicationFee).toLocaleString()}.00</span>
+                    <span className="text-green-800">${(property.price + property.securityDeposit + property.applicationFee).toLocaleString()}.00</span>
                   </div>
                 </div>
 
                 <div className="pt-4 border-t text-sm text-gray-600">
                   <p className="mb-2">By completing this payment, you agree to our terms of service.</p>
-                  <p>Need help? <Link to="/contact" className="text-blue-600 hover:text-blue-800">Contact us</Link></p>
+                  <p>Need help? <Link to="/contact" className="text-green-700 hover:text-red-700">Contact us</Link></p>
                 </div>
               </CardContent>
             </Card>
@@ -223,17 +223,17 @@ const Payment = () => {
         <div className="mt-12">
           <div className="flex items-center justify-center">
             <div className="flex items-center">
-              <div className="bg-blue-600 rounded-full h-8 w-8 flex items-center justify-center text-white">
+              <div className="bg-red-700 rounded-full h-8 w-8 flex items-center justify-center text-white">
                 1
               </div>
-              <div className="ml-2 text-blue-600 font-medium">Property Details</div>
+              <div className="ml-2 text-red-700 font-medium">Property Details</div>
             </div>
             <ChevronRight className="mx-4 text-gray-400" />
             <div className="flex items-center">
-              <div className="bg-blue-600 rounded-full h-8 w-8 flex items-center justify-center text-white">
+              <div className="bg-green-700 rounded-full h-8 w-8 flex items-center justify-center text-white">
                 2
               </div>
-              <div className="ml-2 text-blue-600 font-medium">Payment</div>
+              <div className="ml-2 text-green-700 font-medium">Payment</div>
             </div>
             <ChevronRight className="mx-4 text-gray-400" />
             <div className="flex items-center">
@@ -250,3 +250,4 @@ const Payment = () => {
 };
 
 export default Payment;
+

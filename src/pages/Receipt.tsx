@@ -61,9 +61,9 @@ const Receipt = () => {
         {/* Success Message */}
         <div className="mb-10 text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full text-green-600 mb-4">
-            <CheckCircle className="h-8 w-8" />
+            <CheckCircle className="h-8 w-8 text-green-700" />
           </div>
-          <h2 className="text-2xl font-bold text-black mb-2">Payment Successful!</h2>
+          <h2 className="text-2xl font-bold text-green-800 mb-2">Payment Successful!</h2>
           <p className="text-gray-600">
             Your payment for {transaction.property.title} has been completed successfully.
           </p>
@@ -73,7 +73,7 @@ const Receipt = () => {
         <Card className="mb-8 shadow-lg print:shadow-none">
           <CardHeader className="flex flex-row items-center justify-between border-b print:border-b-black">
             <div>
-              <CardTitle>Receipt</CardTitle>
+              <CardTitle className="text-green-900">Receipt</CardTitle>
               <p className="text-sm text-gray-500">Transaction #{transaction.id}</p>
             </div>
             <div className="flex space-x-2 print:hidden">
@@ -101,7 +101,7 @@ const Receipt = () => {
             {/* Property and People Info */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h3 className="text-sm font-medium text-gray-500 mb-2">Property</h3>
+                <h3 className="text-sm font-medium text-green-900 mb-2">Property</h3>
                 <div className="flex items-start space-x-3">
                   <img 
                     src={transaction.property.image} 
@@ -109,7 +109,7 @@ const Receipt = () => {
                     className="w-16 h-16 object-cover rounded"
                   />
                   <div>
-                    <p className="font-semibold">{transaction.property.title}</p>
+                    <p className="font-semibold text-green-900">{transaction.property.title}</p>
                     <p className="text-sm text-gray-600">{transaction.property.address}</p>
                   </div>
                 </div>
@@ -117,15 +117,15 @@ const Receipt = () => {
 
               <div className="space-y-4">
                 <div>
-                  <h3 className="text-sm font-medium text-gray-500 mb-1">Landlord</h3>
-                  <p className="font-semibold">{transaction.landlord.name}</p>
+                  <h3 className="text-sm font-medium text-green-900 mb-1">Landlord</h3>
+                  <p className="font-semibold text-green-900">{transaction.landlord.name}</p>
                   <p className="text-sm text-gray-600">{transaction.landlord.company}</p>
                   <p className="text-sm text-gray-600">{transaction.landlord.email}</p>
                 </div>
 
                 <div>
-                  <h3 className="text-sm font-medium text-gray-500 mb-1">Tenant</h3>
-                  <p className="font-semibold">{transaction.tenant.name}</p>
+                  <h3 className="text-sm font-medium text-green-900 mb-1">Tenant</h3>
+                  <p className="font-semibold text-green-900">{transaction.tenant.name}</p>
                   <p className="text-sm text-gray-600">{transaction.tenant.email}</p>
                 </div>
               </div>
@@ -135,7 +135,7 @@ const Receipt = () => {
 
             {/* Payment Details */}
             <div>
-              <h3 className="text-sm font-medium text-gray-500 mb-4">Payment Details</h3>
+              <h3 className="text-sm font-medium text-green-900 mb-4">Payment Details</h3>
               
               <div className="space-y-2">
                 <div className="flex justify-between">
@@ -152,19 +152,19 @@ const Receipt = () => {
                 </div>
                 <div className="flex justify-between font-semibold pt-2 border-t">
                   <span>Total</span>
-                  <span>${transaction.payment.total.toLocaleString()}.00</span>
+                  <span className="text-green-800">${transaction.payment.total.toLocaleString()}.00</span>
                 </div>
               </div>
             </div>
 
-            <div className="bg-gray-50 p-4 rounded-lg">
+            <div className="bg-green-50 p-4 rounded-lg">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                 <div>
-                  <h4 className="font-medium">Payment Method</h4>
+                  <h4 className="font-medium text-green-900">Payment Method</h4>
                   <p className="text-gray-600">{transaction.payment.method}</p>
                 </div>
                 <div>
-                  <h4 className="font-medium">Next Payment</h4>
+                  <h4 className="font-medium text-green-900">Next Payment</h4>
                   <p className="text-gray-600">
                     {(() => {
                       const nextMonth = new Date(transaction.date);

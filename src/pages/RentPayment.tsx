@@ -65,8 +65,8 @@ const RentPayment = () => {
         {/* Header */}
         <div className="mb-8 text-center">
           <Link to="/" className="inline-flex items-center justify-center space-x-2">
-            <Home className="h-8 w-8 text-blue-600" />
-            <h1 className="text-2xl font-bold text-gray-900">PropertyHub</h1>
+            <Home className="h-8 w-8 text-green-700" />
+            <h1 className="text-2xl font-bold text-green-800">Makao</h1>
           </Link>
         </div>
 
@@ -76,14 +76,14 @@ const RentPayment = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <CreditCard className="h-5 w-5 mr-2" />
-                  Rent Payment
+                  <CreditCard className="h-5 w-5 mr-2 text-green-700" />
+                  <span className="text-green-800">Rent Payment</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handlePaymentSubmit} className="space-y-6">
                   <div>
-                    <label htmlFor="card-number" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="card-number" className="block text-sm font-medium text-green-900 mb-1">
                       Card Number
                     </label>
                     <div className="relative">
@@ -103,7 +103,7 @@ const RentPayment = () => {
                   </div>
                   
                   <div>
-                    <label htmlFor="card-name" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="card-name" className="block text-sm font-medium text-green-900 mb-1">
                       Name on Card
                     </label>
                     <Input
@@ -118,7 +118,7 @@ const RentPayment = () => {
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="exp-date" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="exp-date" className="block text-sm font-medium text-green-900 mb-1">
                         Expiration Date
                       </label>
                       <Input
@@ -132,7 +132,7 @@ const RentPayment = () => {
                       />
                     </div>
                     <div>
-                      <label htmlFor="cvv" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="cvv" className="block text-sm font-medium text-green-900 mb-1">
                         CVV
                       </label>
                       <Input
@@ -160,12 +160,12 @@ const RentPayment = () => {
                   </div>
 
                   {/* Auto-Pay Setup */}
-                  <div className="bg-blue-50 p-4 rounded-lg">
+                  <div className="bg-green-50 p-4 rounded-lg">
                     <div className="flex items-start justify-between">
                       <div className="flex items-start">
-                        <RefreshCw className="h-6 w-6 text-blue-600 mr-3 mt-0.5" />
+                        <RefreshCw className="h-6 w-6 text-green-700 mr-3 mt-0.5" />
                         <div>
-                          <h4 className="font-semibold text-gray-900 mb-1">Setup Auto-Pay</h4>
+                          <h4 className="font-semibold text-green-900 mb-1">Setup Auto-Pay</h4>
                           <p className="text-sm text-gray-600 mb-3">
                             Never miss a payment. We'll automatically charge your card on the 1st of each month.
                           </p>
@@ -183,21 +183,21 @@ const RentPayment = () => {
                           checked={enableAutoPay}
                           onCheckedChange={setEnableAutoPay}
                         />
-                        <label htmlFor="auto-pay" className="text-sm font-medium text-gray-900">
+                        <label htmlFor="auto-pay" className="text-sm font-medium text-green-900">
                           Enable
                         </label>
                       </div>
                     </div>
                   </div>
 
-                  <div className="bg-blue-50 p-4 rounded-lg">
+                  <div className="bg-green-50 p-4 rounded-lg">
                     <div className="flex items-start">
-                      <Shield className="h-6 w-6 text-blue-600 mr-3 mt-0.5" />
+                      <Shield className="h-6 w-6 text-green-700 mr-3 mt-0.5" />
                       <div>
                         <p className="text-sm text-gray-600">
-                          <span className="font-semibold text-gray-900">Secure Payment:</span> Your payment information is encrypted and secure. Your landlord will be notified once payment is processed.
+                          <span className="font-semibold text-green-900">Secure Payment:</span> Your payment information is encrypted and secure. Your landlord will be notified once payment is processed.
                           {enableAutoPay && (
-                            <span className="block mt-1 text-blue-700">
+                            <span className="block mt-1 text-green-700">
                               Auto-pay will be set up after this payment is processed.
                             </span>
                           )}
@@ -206,7 +206,7 @@ const RentPayment = () => {
                     </div>
                   </div>
 
-                  <Button type="submit" className="w-full" size="lg">
+                  <Button type="submit" className="w-full bg-red-700 hover:bg-green-700 text-white" size="lg">
                     {enableAutoPay ? 
                       `Pay ${totalAmount.toLocaleString()} & Setup Auto-Pay` : 
                       `Pay Rent - $${totalAmount.toLocaleString()}`
@@ -221,7 +221,9 @@ const RentPayment = () => {
           <div>
             <Card>
               <CardHeader>
-                <CardTitle>Rental Summary</CardTitle>
+                <CardTitle>
+                  <span className="text-green-800">Rental Summary</span>
+                </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start space-x-4">
@@ -231,7 +233,7 @@ const RentPayment = () => {
                     className="w-20 h-20 object-cover rounded"
                   />
                   <div>
-                    <h4 className="font-semibold text-gray-900">{rentalInfo.propertyTitle}</h4>
+                    <h4 className="font-semibold text-green-900">{rentalInfo.propertyTitle}</h4>
                     <div className="flex items-center text-sm text-gray-600 mt-1">
                       <MapPin className="h-4 w-4 mr-1" />
                       <span>{rentalInfo.propertyAddress}</span>
@@ -242,13 +244,13 @@ const RentPayment = () => {
                 <div className="pt-4 border-t">
                   <div className="space-y-3">
                     <div>
-                      <h5 className="font-medium text-gray-900 mb-2">Landlord Information</h5>
+                      <h5 className="font-medium text-green-900 mb-2">Landlord Information</h5>
                       <p className="text-sm text-gray-600">{rentalInfo.landlordName}</p>
                       <p className="text-sm text-gray-600">{rentalInfo.landlordEmail}</p>
                     </div>
                     
                     <div>
-                      <h5 className="font-medium text-gray-900 mb-2">Payment Details</h5>
+                      <h5 className="font-medium text-green-900 mb-2">Payment Details</h5>
                       <div className="flex items-center text-sm text-gray-600 mb-1">
                         <Calendar className="h-4 w-4 mr-2" />
                         <span>Due Date: {new Date(rentalInfo.dueDate).toLocaleDateString()}</span>
@@ -281,7 +283,7 @@ const RentPayment = () => {
                 <div className="pt-4 border-t">
                   <div className="flex justify-between items-center font-semibold text-lg">
                     <span>Total Amount</span>
-                    <span>${totalAmount.toLocaleString()}.00</span>
+                    <span className="text-green-800">${totalAmount.toLocaleString()}.00</span>
                   </div>
                 </div>
 
@@ -310,17 +312,17 @@ const RentPayment = () => {
         <div className="mt-12">
           <div className="flex items-center justify-center">
             <div className="flex items-center">
-              <div className="bg-blue-600 rounded-full h-8 w-8 flex items-center justify-center text-white">
+              <div className="bg-red-700 rounded-full h-8 w-8 flex items-center justify-center text-white">
                 1
               </div>
-              <div className="ml-2 text-blue-600 font-medium">Rental Details</div>
+              <div className="ml-2 text-red-700 font-medium">Rental Details</div>
             </div>
             <ChevronRight className="mx-4 text-gray-400" />
             <div className="flex items-center">
-              <div className="bg-blue-600 rounded-full h-8 w-8 flex items-center justify-center text-white">
+              <div className="bg-green-700 rounded-full h-8 w-8 flex items-center justify-center text-white">
                 2
               </div>
-              <div className="ml-2 text-blue-600 font-medium">Payment</div>
+              <div className="ml-2 text-green-700 font-medium">Payment</div>
             </div>
             <ChevronRight className="mx-4 text-gray-400" />
             <div className="flex items-center">
