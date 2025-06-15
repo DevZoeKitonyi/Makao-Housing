@@ -44,17 +44,35 @@ const SubscriptionPayment = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-8 text-center">
-          <Link to="/" className="inline-flex items-center justify-center space-x-2">
-            <Home className="h-8 w-8 text-green-700" />
-            <h1 className="text-2xl font-bold text-green-800">Makao</h1>
-          </Link>
-          <h2 className="text-3xl font-bold text-green-800 mt-4">Choose Your Plan</h2>
-          <p className="text-gray-600 mt-2">Select the perfect plan for your property management needs</p>
+    <div className="min-h-screen bg-gray-50">
+      {/* Desktop Nav */}
+      <header className="bg-white shadow-sm border-b hidden md:block">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center space-x-2">
+              <Home className="h-8 w-8 text-green-700" />
+              <h1 className="text-2xl font-bold text-black">Makao</h1>
+              <span className="ml-2 px-2 py-1 rounded bg-green-700 text-white text-xs hidden sm:inline">Inspired by Kenya</span>
+            </div>
+            <nav className="flex items-center space-x-8">
+              <Link to="/" className="text-gray-700 hover:text-red-700">Home</Link>
+              <Link to="/properties" className="text-gray-700 hover:text-red-700">Properties</Link>
+              <Link to="/about" className="text-gray-700 hover:text-red-700">About</Link>
+              <Link to="/services" className="text-gray-700 hover:text-red-700">Services</Link>
+              <Link to="/contact" className="text-gray-700 hover:text-red-700">Contact</Link>
+            </nav>
+            <div className="flex items-center space-x-4">
+              <Link to="/login">
+                <Button variant="outline" className="border-green-700 text-green-700 hover:bg-green-50">Login</Button>
+              </Link>
+              <Link to="/register">
+                <Button className="bg-red-700 hover:bg-green-700 text-white">Register</Button>
+              </Link>
+            </div>
+          </div>
         </div>
+      </header>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Plan Selection */}
           <div>
@@ -195,6 +213,52 @@ const SubscriptionPayment = () => {
           </div>
         </div>
       </div>
+      {/* Desktop Footer */}
+      <footer className="hidden md:block bg-black text-white py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <div className="flex items-center space-x-2 mb-4">
+                <Home className="h-8 w-8 text-green-700" />
+                <h3 className="text-xl font-bold">Makao</h3>
+              </div>
+              <p className="text-gray-400">
+                Your trusted companion for finding the best homes in Kenya.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+              <ul className="space-y-2">
+                <li><Link to="/properties" className="text-gray-400 hover:text-green-400">Properties</Link></li>
+                <li><Link to="/about" className="text-gray-400 hover:text-green-400">About Us</Link></li>
+                <li><Link to="/services" className="text-gray-400 hover:text-green-400">Services</Link></li>
+                <li><Link to="/contact" className="text-gray-400 hover:text-green-400">Contact</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-4">For Users</h4>
+              <ul className="space-y-2">
+                <li><Link to="/login" className="text-gray-400 hover:text-green-400">Login</Link></li>
+                <li><Link to="/register" className="text-gray-400 hover:text-green-400">Register</Link></li>
+                <li><Link to="/wishlist" className="text-gray-400 hover:text-green-400">Wishlist</Link></li>
+                <li><Link to="/dashboard" className="text-gray-400 hover:text-green-400">Dashboard</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
+              <div className="space-y-2 text-gray-400">
+                <p>P.O. Box 1234</p>
+                <p>Nairobi, Kenya</p>
+                <p>Phone: +254 712 345678</p>
+                <p>Email: info@makao.co.ke</p>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-green-800 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2024 Makao. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
