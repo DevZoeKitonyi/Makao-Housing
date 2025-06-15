@@ -30,7 +30,7 @@ const landlordNotifications = [
 ];
 
 const DashboardNotifications = () => (
-  <div className="max-w-2xl mx-auto py-8 px-4">
+  <div className="max-w-2xl mx-auto py-8 px-2 sm:px-4 w-full">
     <h1 className="text-2xl font-bold flex items-center gap-2 mb-8 text-green-700">
       <Bell className="h-6 w-6" />
       Landlord Notifications
@@ -47,7 +47,7 @@ const DashboardNotifications = () => (
               : "border-black bg-white"
           }`}
         >
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
             <h2 className="text-xl font-semibold">{n.title}</h2>
             <span className="text-xs text-gray-500">
               {new Date(n.date).toLocaleDateString()}

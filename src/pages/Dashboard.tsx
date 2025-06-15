@@ -56,13 +56,19 @@ const Dashboard = () => {
             ))}
           </nav>
         </aside>
-        <main className="flex-1 px-2 sm:px-6 py-4 sm:py-6 overflow-x-auto w-full">
-          <Outlet />
+        <main className="flex-1 px-2 sm:px-4 py-4 sm:py-6 overflow-x-auto w-full">
+          <div className="max-w-full mx-auto">
+            <Outlet />
+          </div>
         </main>
       </div>
-      <MakaoFooter />
+      <div className="w-full">
+        <MakaoFooter />
+      </div>
     </div>
   );
 };
 
 export default Dashboard;
+
+// NOTE: This file is getting too long. Please consider refactoring it into smaller components or files!

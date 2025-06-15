@@ -53,7 +53,7 @@ const Receipt = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 py-6 sm:py-12 flex flex-col">
-      <div className="flex-1 max-w-4xl mx-auto px-2 sm:px-4 lg:px-8 relative">
+      <div className="flex-1 max-w-4xl mx-auto px-2 sm:px-4 lg:px-8 relative w-full">
         {/* Header */}
         <div className="mb-8 text-center">
           <MakaoHeader />

@@ -329,7 +329,7 @@ const RentPayment = () => {
         </div>
 
         {/* Steps Indicator */}
-        <div className="mt-10 sm:mt-12 px-2 sm:px-0">
+        <div className="mt-10 sm:mt-12 px-2 sm:px-0 overflow-x-auto">
           <div className="flex flex-col xs:flex-row items-center justify-center space-y-2 xs:space-y-0 xs:space-x-2 sm:space-x-0 sm:flex-row">
             <div className="flex items-center mb-2 xs:mb-0">
               <div className="bg-red-700 rounded-full h-8 w-8 flex items-center justify-center text-white">

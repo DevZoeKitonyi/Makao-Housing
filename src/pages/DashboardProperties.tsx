@@ -31,7 +31,7 @@ const properties = [
 ];
 
 const DashboardProperties = () => (
-  <div className="max-w-4xl mx-auto py-8 px-4">
+  <div className="max-w-4xl mx-auto py-8 px-2 sm:px-4 w-full">
     <h1 className="text-2xl font-bold mb-6 text-green-700 flex items-center gap-2">
       <Home className="h-6 w-6" /> All Properties
     </h1>
@@ -42,11 +42,11 @@ const DashboardProperties = () => (
             <CardTitle>{property.title}</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex items-center mb-3">
+            <div className="flex flex-col sm:flex-row items-center mb-3 gap-2">
               <img
                 src={property.image}
                 alt={property.title}
-                className="w-24 h-24 object-cover rounded mr-4"
+                className="w-24 h-24 object-cover rounded mr-0 sm:mr-4 mb-2 sm:mb-0"
               />
               <div>
                 <p className="mb-1 font-semibold">
