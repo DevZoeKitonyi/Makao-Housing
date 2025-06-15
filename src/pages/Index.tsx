@@ -67,7 +67,6 @@ const Index = () => {
                 <Link to="/properties" className="text-gray-700 hover:text-red-700">Properties</Link>
                 <Link to="/about" className="text-gray-700 hover:text-red-700">About</Link>
                 <Link to="/services" className="text-gray-700 hover:text-red-700">Services</Link>
-                <Link to="/blog" className="text-gray-700 hover:text-red-700">Blog</Link>
                 <Link to="/contact" className="text-gray-700 hover:text-red-700">Contact</Link>
               </nav>
               <div className="hidden md:flex items-center space-x-4">
