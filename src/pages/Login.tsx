@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import AnimationWrapper from "@/components/AnimationWrapper";
 import MakaoHeader from "@/components/MakaoHeader";
-import MakaoFooter from "@/components/MakaoFooter";
+// Removed import of MakaoFooter
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -115,7 +115,7 @@ const Login = () => {
           </AnimationWrapper>
         </div>
       </main>
-      <MakaoFooter />
+      {/* Removed MakaoFooter */}
     </div>
   );
 };
