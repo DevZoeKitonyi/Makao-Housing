@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home, Search, Users, FileImage, Briefcase, ArrowRight, CheckCircle } from 'lucide-react';
@@ -61,7 +60,7 @@ const Services = () => {
               <Home className="h-8 w-8 text-blue-600" />
               <h1 className="text-2xl font-bold text-gray-900">PropertyHub</h1>
             </Link>
-            <nav className="hidden md:flex items-center space-x-8">
+            <nav className="flex items-center space-x-8">
               <Link to="/" className="text-gray-700 hover:text-blue-600">Home</Link>
               <Link to="/properties" className="text-gray-700 hover:text-blue-600">Properties</Link>
               <Link to="/about" className="text-gray-700 hover:text-blue-600">About</Link>
@@ -69,14 +68,6 @@ const Services = () => {
               <Link to="/blog" className="text-gray-700 hover:text-blue-600">Blog</Link>
               <Link to="/contact" className="text-gray-700 hover:text-blue-600">Contact</Link>
             </nav>
-            <div className="flex items-center space-x-4">
-              <Link to="/login">
-                <Button variant="outline">Login</Button>
-              </Link>
-              <Link to="/register">
-                <Button>Register</Button>
-              </Link>
-            </div>
           </div>
         </div>
       </header>
@@ -345,7 +336,7 @@ const Services = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-gray-900 text-white py-12 hidden md:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
