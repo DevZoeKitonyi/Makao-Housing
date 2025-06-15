@@ -1,11 +1,11 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Home, CreditCard, Shield, ChevronRight, Calendar, MapPin } from 'lucide-react';
+import { Home, CreditCard, Shield, ChevronRight, Calendar, MapPin, RefreshCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Switch } from '@/components/ui/switch';
 
 const RentPayment = () => {
   const [cardNumber, setCardNumber] = useState('');
@@ -13,6 +13,7 @@ const RentPayment = () => {
   const [expDate, setExpDate] = useState('');
   const [cvv, setCvv] = useState('');
   const [saveCard, setSaveCard] = useState(false);
+  const [enableAutoPay, setEnableAutoPay] = useState(false);
 
   // Mock rental data for the current tenant
   const rentalInfo = {
@@ -51,8 +52,8 @@ const RentPayment = () => {
 
   const handlePaymentSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle rent payment submission
-    console.log('Processing rent payment...');
+    // Handle rent payment submission with auto-pay setup
+    console.log('Processing rent payment with auto-pay:', enableAutoPay);
     window.location.href = "/receipt";
   };
 
@@ -158,19 +159,58 @@ const RentPayment = () => {
                     </label>
                   </div>
 
+                  {/* Auto-Pay Setup */}
+                  <div className="bg-blue-50 p-4 rounded-lg">
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-start">
+                        <RefreshCw className="h-6 w-6 text-blue-600 mr-3 mt-0.5" />
+                        <div>
+                          <h4 className="font-semibold text-gray-900 mb-1">Setup Auto-Pay</h4>
+                          <p className="text-sm text-gray-600 mb-3">
+                            Never miss a payment. We'll automatically charge your card on the 1st of each month.
+                          </p>
+                          <ul className="text-xs text-gray-500 space-y-1">
+                            <li>• Automatic payment on the 1st of each month</li>
+                            <li>• Email notifications before each payment</li>
+                            <li>• Cancel anytime from your dashboard</li>
+                            <li>• Secure and encrypted transactions</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <Switch
+                          id="auto-pay"
+                          checked={enableAutoPay}
+                          onCheckedChange={setEnableAutoPay}
+                        />
+                        <label htmlFor="auto-pay" className="text-sm font-medium text-gray-900">
+                          Enable
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
                   <div className="bg-blue-50 p-4 rounded-lg">
                     <div className="flex items-start">
                       <Shield className="h-6 w-6 text-blue-600 mr-3 mt-0.5" />
                       <div>
                         <p className="text-sm text-gray-600">
                           <span className="font-semibold text-gray-900">Secure Payment:</span> Your payment information is encrypted and secure. Your landlord will be notified once payment is processed.
+                          {enableAutoPay && (
+                            <span className="block mt-1 text-blue-700">
+                              Auto-pay will be set up after this payment is processed.
+                            </span>
+                          )}
                         </p>
                       </div>
                     </div>
                   </div>
 
                   <Button type="submit" className="w-full" size="lg">
-                    Pay Rent - ${totalAmount.toLocaleString()}
+                    {enableAutoPay ? 
+                      `Pay ${totalAmount.toLocaleString()} & Setup Auto-Pay` : 
+                      `Pay Rent - $${totalAmount.toLocaleString()}`
+                    }
                   </Button>
                 </form>
               </CardContent>
@@ -229,6 +269,12 @@ const RentPayment = () => {
                         <span>${rentalInfo.lateFee.toLocaleString()}.00</span>
                       </div>
                     )}
+                    {enableAutoPay && (
+                      <div className="flex justify-between text-blue-600">
+                        <span>Auto-Pay Setup</span>
+                        <span>Included</span>
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -239,10 +285,10 @@ const RentPayment = () => {
                   </div>
                 </div>
 
-                {rentalInfo.isLate && (
-                  <div className="bg-red-50 p-3 rounded-lg">
-                    <p className="text-sm text-red-800">
-                      <span className="font-semibold">Late Payment Notice:</span> Your rent payment is overdue. A late fee of ${rentalInfo.lateFee} has been added.
+                {enableAutoPay && (
+                  <div className="bg-green-50 p-3 rounded-lg">
+                    <p className="text-sm text-green-800">
+                      <span className="font-semibold">Auto-Pay Benefits:</span> Never miss a payment, avoid late fees, and get email reminders before each charge.
                     </p>
                   </div>
                 )}

@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Mail, Phone, Calendar, Home, DollarSign } from 'lucide-react';
+import { Mail, Phone, Calendar, Home, DollarSign, Bell } from 'lucide-react';
 
 interface Tenant {
   id: number;
@@ -34,6 +33,11 @@ const TenantModal = ({ tenant, isOpen, onClose }: TenantModalProps) => {
       case 'Overdue': return 'bg-red-100 text-red-800';
       default: return 'bg-gray-100 text-gray-800';
     }
+  };
+
+  const sendNotification = (type: string) => {
+    console.log(`Sending ${type} notification to ${tenant.name}`);
+    // In a real app, this would call an API to send the notification
   };
 
   return (
@@ -95,8 +99,28 @@ const TenantModal = ({ tenant, isOpen, onClose }: TenantModalProps) => {
           </div>
 
           <div className="flex space-x-2">
-            <Button variant="outline" className="flex-1">Send Message</Button>
-            <Button className="flex-1">Request Payment</Button>
+            <Button variant="outline" className="flex-1" onClick={() => sendNotification('message')}>
+              <Mail className="h-4 w-4 mr-2" />
+              Send Message
+            </Button>
+            <Button className="flex-1" onClick={() => sendNotification('payment')}>
+              <DollarSign className="h-4 w-4 mr-2" />
+              Request Payment
+            </Button>
+          </div>
+          
+          <div className="border-t pt-4">
+            <h4 className="font-medium mb-2">Quick Actions</h4>
+            <div className="grid grid-cols-2 gap-2">
+              <Button variant="outline" size="sm" onClick={() => sendNotification('maintenance')}>
+                <Bell className="h-4 w-4 mr-1" />
+                Maintenance
+              </Button>
+              <Button variant="outline" size="sm" onClick={() => sendNotification('lease')}>
+                <Calendar className="h-4 w-4 mr-1" />
+                Lease Info
+              </Button>
+            </div>
           </div>
         </div>
       </DialogContent>

@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Home, Plus, Heart, Users, BarChart, Settings, LogOut, Edit, Trash2, Eye, DollarSign, AlertCircle } from 'lucide-react';
+import { Home, Plus, Heart, Users, BarChart, Settings, LogOut, Edit, Trash2, Eye, DollarSign, AlertCircle, Bell } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -317,12 +316,58 @@ const Dashboard = () => {
               <p className="font-medium text-orange-800">Rent Payment Due</p>
               <p className="text-sm text-orange-600">Your rent payment of $2,500 is due on June 1st, 2024</p>
             </div>
-            <Link to="/payment" className="ml-auto">
-              <Button size="sm">Pay Now</Button>
-            </Link>
+            <div className="ml-auto flex space-x-2">
+              <Link to="/rent-payment">
+                <Button size="sm">Pay Now</Button>
+              </Link>
+              <Link to="/rent-payment">
+                <Button variant="outline" size="sm">Setup Auto-Pay</Button>
+              </Link>
+            </div>
           </div>
         </CardContent>
       </Card>
+
+      {/* Quick Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <Card>
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-600">Next Payment</p>
+                <p className="text-lg font-semibold">June 1st</p>
+              </div>
+              <DollarSign className="h-6 w-6 text-green-600" />
+            </div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-600">Auto-Pay Status</p>
+                <p className="text-lg font-semibold text-red-600">Disabled</p>
+              </div>
+              <AlertCircle className="h-6 w-6 text-red-600" />
+            </div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-600">Notifications</p>
+                <p className="text-lg font-semibold">3 unread</p>
+              </div>
+              <Link to="/notifications">
+                <Button variant="ghost" size="sm">
+                  <Bell className="h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
 
       {/* Wishlist */}
       <Card>
@@ -401,12 +446,20 @@ const Dashboard = () => {
                 </li>
               </>
             ) : (
-              <li>
-                <Link to="/dashboard/wishlist" className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100 text-gray-700">
-                  <Heart className="h-5 w-5" />
-                  <span>Wishlist</span>
-                </Link>
-              </li>
+              <>
+                <li>
+                  <Link to="/notifications" className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100 text-gray-700">
+                    <Bell className="h-5 w-5" />
+                    <span>Notifications</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/wishlist" className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100 text-gray-700">
+                    <Heart className="h-5 w-5" />
+                    <span>Wishlist</span>
+                  </Link>
+                </li>
+              </>
             )}
             <li>
               <Link to="/subscription-payment" className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100 text-gray-700">
