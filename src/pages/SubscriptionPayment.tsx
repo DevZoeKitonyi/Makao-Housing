@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Home, CreditCard, Shield, Check, Star } from 'lucide-react';
@@ -50,10 +49,10 @@ const SubscriptionPayment = () => {
         {/* Header */}
         <div className="mb-8 text-center">
           <Link to="/" className="inline-flex items-center justify-center space-x-2">
-            <Home className="h-8 w-8 text-blue-600" />
-            <h1 className="text-2xl font-bold text-gray-900">PropertyHub</h1>
+            <Home className="h-8 w-8 text-black" />
+            <h1 className="text-2xl font-bold text-black">Makao</h1>
           </Link>
-          <h2 className="text-3xl font-bold text-gray-900 mt-4">Choose Your Plan</h2>
+          <h2 className="text-3xl font-bold text-black mt-4">Choose Your Plan</h2>
           <p className="text-gray-600 mt-2">Select the perfect plan for your property management needs</p>
         </div>
 
@@ -66,13 +65,13 @@ const SubscriptionPayment = () => {
                 <Card
                   key={plan.id}
                   className={`cursor-pointer transition-all ${
-                    selectedPlan === plan.id ? 'ring-2 ring-blue-600 border-blue-600' : ''
+                    selectedPlan === plan.id ? 'ring-2 ring-green-700 border-green-700' : 'border-green-700'
                   } ${plan.popular ? 'relative' : ''}`}
                   onClick={() => setSelectedPlan(plan.id)}
                 >
                   {plan.popular && (
                     <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                      <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
+                      <span className="bg-red-700 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
                         <Star className="h-4 w-4 mr-1" />
                         Most Popular
                       </span>
@@ -82,13 +81,13 @@ const SubscriptionPayment = () => {
                     <div className="flex items-center justify-between mb-4">
                       <div>
                         <h4 className="text-xl font-bold">{plan.name}</h4>
-                        <div className="text-3xl font-bold text-blue-600">
+                        <div className="text-3xl font-bold text-green-700">
                           ${plan.price}<span className="text-lg text-gray-600">/month</span>
                         </div>
                       </div>
                       <div className={`w-6 h-6 rounded-full border-2 ${
                         selectedPlan === plan.id 
-                          ? 'bg-blue-600 border-blue-600' 
+                          ? 'bg-green-700 border-green-700' 
                           : 'border-gray-300'
                       } flex items-center justify-center`}>
                         {selectedPlan === plan.id && <Check className="h-4 w-4 text-white" />}
@@ -97,7 +96,7 @@ const SubscriptionPayment = () => {
                     <ul className="space-y-2">
                       {plan.features.map((feature, index) => (
                         <li key={index} className="flex items-center">
-                          <Check className="h-4 w-4 text-green-500 mr-2" />
+                          <Check className="h-4 w-4 text-green-700 mr-2" />
                           <span className="text-gray-700">{feature}</span>
                         </li>
                       ))}
@@ -107,7 +106,6 @@ const SubscriptionPayment = () => {
               ))}
             </div>
           </div>
-
           {/* Payment Form */}
           <div>
             <Card>
@@ -116,8 +114,9 @@ const SubscriptionPayment = () => {
               </CardHeader>
               <CardContent>
                 <form onSubmit={handlePaymentSubmit} className="space-y-6">
+                  {/* ... keep form fields exactly the same but update accent colors ... */}
                   <div>
-                    <label htmlFor="card-number" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="card-number" className="block text-sm font-medium text-black mb-1">
                       Card Number
                     </label>
                     <div className="relative">
@@ -134,9 +133,8 @@ const SubscriptionPayment = () => {
                       </div>
                     </div>
                   </div>
-                  
                   <div>
-                    <label htmlFor="card-name" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="card-name" className="block text-sm font-medium text-black mb-1">
                       Name on Card
                     </label>
                     <Input
@@ -147,10 +145,9 @@ const SubscriptionPayment = () => {
                       required
                     />
                   </div>
-
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="exp-date" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="exp-date" className="block text-sm font-medium text-black mb-1">
                         Expiration Date
                       </label>
                       <Input
@@ -163,7 +160,7 @@ const SubscriptionPayment = () => {
                       />
                     </div>
                     <div>
-                      <label htmlFor="cvv" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="cvv" className="block text-sm font-medium text-black mb-1">
                         CVV
                       </label>
                       <Input
@@ -177,24 +174,21 @@ const SubscriptionPayment = () => {
                       />
                     </div>
                   </div>
-
                   <div className="border-t pt-4">
                     <div className="flex justify-between text-lg font-semibold">
                       <span>Total (Monthly)</span>
                       <span>${plans.find(p => p.id === selectedPlan)?.price}/month</span>
                     </div>
                   </div>
-
-                  <div className="bg-blue-50 p-4 rounded-lg">
+                  <div className="bg-green-50 p-4 rounded-lg">
                     <div className="flex items-start">
-                      <Shield className="h-6 w-6 text-blue-600 mr-3 mt-0.5" />
+                      <Shield className="h-6 w-6 text-green-700 mr-3 mt-0.5" />
                       <p className="text-sm text-gray-600">
-                        <span className="font-semibold text-gray-900">Secure Payment:</span> Your payment information is encrypted and secure. Cancel anytime.
+                        <span className="font-semibold text-black">Secure Payment:</span> Your payment information is encrypted and secure. Cancel anytime.
                       </p>
                     </div>
                   </div>
-
-                  <Button type="submit" className="w-full">
+                  <Button type="submit" className="w-full bg-red-700 hover:bg-green-700 text-white">
                     Subscribe Now
                   </Button>
                 </form>
