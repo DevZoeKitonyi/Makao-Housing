@@ -1,9 +1,11 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import MakaoHeader from "@/components/MakaoHeader";
 import MakaoSectionHeader from "@/components/MakaoSectionHeader";
 import { Button } from "@/components/ui/button";
 import MakaoNav from "@/components/MakaoNav";
+import MakaoFooter from "@/components/MakaoFooter";
 
 // Kenyan hero section theme
 const AboutHero = () => (
@@ -74,6 +76,7 @@ const About = () => (
         </Link>
       </div>
     </section>
+    <MakaoFooter />
   </div>
 );
 

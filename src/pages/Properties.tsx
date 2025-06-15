@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import PropertyCard from '@/components/PropertyCard';
 import FiltersSidebar from '@/components/FiltersSidebar';
 import MakaoNav from '@/components/MakaoNav';
+import MakaoFooter from "@/components/MakaoFooter";
 
 const Properties = () => {
   const [showFilters, setShowFilters] = useState(false);
@@ -79,7 +80,7 @@ const Properties = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       <MakaoNav />
       {/* Hero: copy landing style */}
       <section className="relative bg-gradient-to-r from-black via-red-700 to-green-700 text-white pt-12 pb-16">
@@ -112,49 +113,52 @@ const Properties = () => {
         </div>
       </section>
       {/* Main content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Filters Sidebar */}
-          <FiltersSidebar show={showFilters} priceRange={priceRange} setPriceRange={setPriceRange} />
+      <div className="flex-1">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Filters Sidebar */}
+            <FiltersSidebar show={showFilters} priceRange={priceRange} setPriceRange={setPriceRange} />
 
-          {/* Properties Grid */}
-          <div className="flex-1">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-bold text-black">
-                {properties.length} Properties Found
-              </h2>
-              <select className="border border-green-700 rounded-md px-3 py-2 text-gray-900">
-                <option>Sort by: Featured</option>
-                <option>Price: Low to High</option>
-                <option>Price: High to Low</option>
-                <option>Newest First</option>
-              </select>
-            </div>
+            {/* Properties Grid */}
+            <div className="flex-1">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-2xl font-bold text-black">
+                  {properties.length} Properties Found
+                </h2>
+                <select className="border border-green-700 rounded-md px-3 py-2 text-gray-900">
+                  <option>Sort by: Featured</option>
+                  <option>Price: Low to High</option>
+                  <option>Price: High to Low</option>
+                  <option>Newest First</option>
+                </select>
+              </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-              {properties.map((property) => (
-                <PropertyCard 
-                  key={property.id} 
-                  property={property} 
-                  saved={savedProperties.includes(property.id)}
-                  onSave={toggleSaveProperty}
-                />
-              ))}
-            </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                {properties.map((property) => (
+                  <PropertyCard 
+                    key={property.id} 
+                    property={property} 
+                    saved={savedProperties.includes(property.id)}
+                    onSave={toggleSaveProperty}
+                  />
+                ))}
+              </div>
 
-            {/* Pagination */}
-            <div className="flex justify-center mt-12">
-              <div className="flex items-center space-x-2">
-                <Button variant="outline" disabled>Previous</Button>
-                <Button variant="outline" className="bg-green-700 text-white">1</Button>
-                <Button variant="outline">2</Button>
-                <Button variant="outline">3</Button>
-                <Button variant="outline">Next</Button>
+              {/* Pagination */}
+              <div className="flex justify-center mt-12">
+                <div className="flex items-center space-x-2">
+                  <Button variant="outline" disabled>Previous</Button>
+                  <Button variant="outline" className="bg-green-700 text-white">1</Button>
+                  <Button variant="outline">2</Button>
+                  <Button variant="outline">3</Button>
+                  <Button variant="outline">Next</Button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <MakaoFooter />
     </div>
   );
 };
