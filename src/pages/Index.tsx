@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import AnimationWrapper from '@/components/AnimationWrapper';
+import MakaoNav from "@/components/MakaoNav";
 
 // Kenyan flag: black #000, red #d32f2f, green #388e3c, white accent
 const kenyanColors = {
@@ -53,35 +54,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gray-50 overflow-x-hidden">
       {/* Header */}
-      <AnimationWrapper>
-        <header className="bg-white shadow-sm border-b">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              <div className="flex items-center space-x-2">
-                <Home className="h-8 w-8 text-black" />
-                <h1 className="text-2xl font-bold text-black">Makao</h1>
-                <span className="ml-2 px-2 py-1 rounded bg-green-700 text-white text-xs hidden sm:inline">Inspired by Kenya</span>
-              </div>
-              <nav className="hidden md:flex items-center space-x-8">
-                <Link to="/" className="text-gray-700 hover:text-red-700">Home</Link>
-                <Link to="/properties" className="text-gray-700 hover:text-red-700">Properties</Link>
-                <Link to="/about" className="text-gray-700 hover:text-red-700">About</Link>
-                <Link to="/services" className="text-gray-700 hover:text-red-700">Services</Link>
-                <Link to="/contact" className="text-gray-700 hover:text-red-700">Contact</Link>
-                <Link to="/notifications" className="text-gray-700 hover:text-red-700">Notifications</Link>
-              </nav>
-              <div className="hidden md:flex items-center space-x-4">
-                <Link to="/login">
-                  <Button variant="outline" className="border-green-700 text-green-700 hover:bg-green-50">Login</Button>
-                </Link>
-                <Link to="/register">
-                  <Button className="bg-red-700 hover:bg-green-700 text-white">Register</Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </header>
-      </AnimationWrapper>
+      <MakaoNav />
 
       {/* Hero Section */}
       <AnimationWrapper delay={200}>
