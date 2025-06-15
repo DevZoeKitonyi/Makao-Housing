@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, Routes, Route } from 'react-router-dom';
 import { 
   Home, Plus, Heart, Users, BarChart, Settings, LogOut, Edit, Trash2, Eye, DollarSign, AlertCircle, Bell 
 } from 'lucide-react';
@@ -10,6 +10,9 @@ import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import PropertyModal from '@/components/PropertyModal';
 import TenantModal from '@/components/TenantModal';
+import DashboardNotifications from "./DashboardNotifications";
+import DashboardTenants from "./DashboardTenants";
+import DashboardProperties from "./DashboardProperties";
 
 const Dashboard = () => {
   const [userType] = useState('landlord');
@@ -438,6 +441,15 @@ const Dashboard = () => {
     </div>
   );
 
+  // Sidebar links. We'll add the new routes for landlord.
+  const sidebarLinks = [
+    { label: 'Overview', to: '/dashboard' },
+    { label: 'Properties', to: '/dashboard/properties' },
+    { label: 'Tenants', to: '/dashboard/tenants' },
+    { label: 'Notifications', to: '/dashboard/notifications' },
+    // ... add more if needed ...
+  ];
+
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-green-50 to-red-50">
       {/* Sidebar */}
@@ -450,24 +462,20 @@ const Dashboard = () => {
         </div>
         <nav className="p-4">
           <ul className="space-y-2">
-            <li>
-              <Link to="/dashboard" className="flex items-center space-x-2 p-2 rounded-md bg-green-100 text-green-800 font-bold">
-                <BarChart className="h-5 w-5" />
-                <span>Dashboard</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/dashboard/properties" className="flex items-center space-x-2 p-2 rounded-md hover:bg-green-50 text-gray-800">
-                <Home className="h-5 w-5" />
-                <span>My Properties</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/dashboard/tenants" className="flex items-center space-x-2 p-2 rounded-md hover:bg-green-50 text-gray-800">
-                <Users className="h-5 w-5" />
-                <span>Tenants</span>
-              </Link>
-            </li>
+            {sidebarLinks.map(link => (
+              <li key={link.to}>
+                <Link
+                  to={link.to}
+                  className={`flex items-center space-x-2 p-2 rounded-md ${
+                    window.location.pathname === link.to
+                      ? "bg-green-100 text-green-800 font-bold"
+                      : "hover:bg-green-50 text-gray-800"
+                  }`}
+                >
+                  <span>{link.label}</span>
+                </Link>
+              </li>
+            ))}
             <li>
               <Link to="/wishlist" className="flex items-center space-x-2 p-2 rounded-md hover:bg-green-50 text-gray-800">
                 <Heart className="h-5 w-5" />
@@ -501,7 +509,6 @@ const Dashboard = () => {
           </ul>
         </nav>
       </div>
-
       {/* Main Content */}
       <div className="flex-1 overflow-y-auto">
         <div className="p-4 md:p-6 pb-20 md:pb-6">
@@ -519,42 +526,32 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-
-          <Tabs defaultValue="overview">
-            <TabsList className="mb-6">
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              {userType === 'landlord' && (
-                <>
+          <Routes>
+            <Route path="" element={
+              <Tabs defaultValue="overview">
+                <TabsList className="mb-6">
+                  <TabsTrigger value="overview">Overview</TabsTrigger>
                   <TabsTrigger value="properties">Properties</TabsTrigger>
                   <TabsTrigger value="tenants">Tenants</TabsTrigger>
-                </>
-              )}
-              {userType === 'tenant' && (
-                <TabsTrigger value="wishlist">Wishlist</TabsTrigger>
-              )}
-            </TabsList>
-            <TabsContent value="overview">
-              {userType === 'landlord' ? <LandlordDashboard /> : <TenantDashboard />}
-            </TabsContent>
-            {userType === 'landlord' && (
-              <>
-                <TabsContent value="properties">
+                </TabsList>
+                <TabsContent value="overview">
                   <LandlordDashboard />
+                </TabsContent>
+                <TabsContent value="properties">
+                  <LandlordDashboard /> {/* You may swap this for something else or link to DashboardProperties */}
                 </TabsContent>
                 <TabsContent value="tenants">
                   <TenantsTab />
                 </TabsContent>
-              </>
-            )}
-            {userType === 'tenant' && (
-              <TabsContent value="wishlist">
-                <TenantDashboard />
-              </TabsContent>
-            )}
-          </Tabs>
+              </Tabs>
+            } />
+            <Route path="notifications" element={<React.Suspense fallback={<div>Loading...</div>}><DashboardNotifications /></React.Suspense>} />
+            <Route path="tenants" element={<React.Suspense fallback={<div>Loading...</div>}><DashboardTenants /></React.Suspense>} />
+            <Route path="properties" element={<React.Suspense fallback={<div>Loading...</div>}><DashboardProperties /></React.Suspense>} />
+          </Routes>
+          {/* ... keep modals as appropriate ... */}
         </div>
       </div>
-
       {/* Modals */}
       <PropertyModal
         property={propertyModal.property}

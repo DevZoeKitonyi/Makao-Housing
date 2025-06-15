@@ -22,6 +22,9 @@ import Contact from "./pages/Contact";
 import SubscriptionPayment from "./pages/SubscriptionPayment";
 import Wishlist from "./pages/Wishlist";
 import Notifications from "./pages/Notifications";
+import DashboardNotifications from "./pages/DashboardNotifications";
+import DashboardTenants from "./pages/DashboardTenants";
+import DashboardProperties from "./pages/DashboardProperties";
 
 const queryClient = new QueryClient();
 
@@ -38,7 +41,11 @@ const App = () => (
             <Route path="/property/:id" element={<PropertyDetail />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/*" element={<Dashboard />}>
+              <Route path="notifications" element={<DashboardNotifications />} />
+              <Route path="tenants" element={<DashboardTenants />} />
+              <Route path="properties" element={<DashboardProperties />} />
+            </Route>
             <Route path="/payment" element={<Payment />} />
             <Route path="/rent-payment" element={<RentPayment />} />
             <Route path="/subscription-payment" element={<SubscriptionPayment />} />
