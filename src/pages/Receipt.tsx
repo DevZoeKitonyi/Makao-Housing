@@ -1,10 +1,11 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home, Download, CheckCircle, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import ReceiptInfoSection from "@/components/ReceiptInfoSection";
+import MakaoHeader from "@/components/MakaoHeader";
 
 const Receipt = () => {
   // Mock property and payment data
@@ -54,10 +55,7 @@ const Receipt = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8 text-center">
-          <Link to="/" className="inline-flex items-center justify-center space-x-2">
-            <Home className="h-8 w-8 text-blue-600" />
-            <h1 className="text-2xl font-bold text-gray-900">PropertyHub</h1>
-          </Link>
+          <MakaoHeader />
         </div>
 
         {/* Success Message */}
@@ -65,7 +63,7 @@ const Receipt = () => {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full text-green-600 mb-4">
             <CheckCircle className="h-8 w-8" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Payment Successful!</h2>
+          <h2 className="text-2xl font-bold text-black mb-2">Payment Successful!</h2>
           <p className="text-gray-600">
             Your payment for {transaction.property.title} has been completed successfully.
           </p>
@@ -79,30 +77,24 @@ const Receipt = () => {
               <p className="text-sm text-gray-500">Transaction #{transaction.id}</p>
             </div>
             <div className="flex space-x-2 print:hidden">
-              <Button variant="outline" onClick={handlePrint}>
+              <Button variant="outline" onClick={handlePrint} className="border-green-700 text-green-700 hover:bg-green-100">
                 Print
               </Button>
-              <Button 
-                variant="outline" 
-                className="flex items-center space-x-1"
+              <Button
+                variant="outline"
+                className="flex items-center space-x-1 border-green-700 text-green-700 hover:bg-green-100"
               >
                 <Download className="h-4 w-4" />
                 <span>PDF</span>
               </Button>
             </div>
           </CardHeader>
-          
           <CardContent className="p-6 space-y-6">
             {/* Date and Status */}
-            <div className="flex justify-between items-center">
-              <div className="flex items-center space-x-2 text-gray-600">
-                <Calendar className="h-4 w-4" />
-                <span>{formatDate(transaction.date)}</span>
-              </div>
-              <div className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                {transaction.payment.status}
-              </div>
-            </div>
+            <ReceiptInfoSection
+              date={formatDate(transaction.date)}
+              status={transaction.payment.status}
+            />
 
             <Separator />
 
@@ -191,10 +183,10 @@ const Receipt = () => {
           <p>What would you like to do next?</p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link to="/dashboard">
-              <Button variant="outline">Go to Dashboard</Button>
+              <Button variant="outline" className="border-green-700 text-green-700 hover:bg-green-100">Go to Dashboard</Button>
             </Link>
             <Link to="/properties">
-              <Button>Browse More Properties</Button>
+              <Button className="bg-red-700 hover:bg-green-700 text-white">Browse More Properties</Button>
             </Link>
           </div>
         </div>
