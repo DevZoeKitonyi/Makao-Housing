@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, MapPin, Heart, ArrowRight, Trash2, Eye } from 'lucide-react';
@@ -79,7 +78,7 @@ const Wishlist = () => {
               <Link to="/blog" className="text-gray-700 hover:text-blue-600">Blog</Link>
               <Link to="/contact" className="text-gray-700 hover:text-blue-600">Contact</Link>
             </nav>
-            <div className="flex items-center space-x-4">
+            <div className="hidden md:flex items-center space-x-4">
               <Link to="/login">
                 <Button variant="outline">Login</Button>
               </Link>
@@ -91,7 +90,7 @@ const Wishlist = () => {
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-20 md:pb-8">
         {/* Page Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between">
