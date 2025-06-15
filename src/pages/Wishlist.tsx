@@ -65,9 +65,8 @@ const Wishlist = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <MakaoNav />
-
       <div className="flex-1">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-20 md:pb-8">
+        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-6 sm:py-8 pb-20 md:pb-8">
           {/* Page Header */}
           <div className="mb-8">
             <div className="flex items-center justify-between">
@@ -84,7 +83,6 @@ const Wishlist = () => {
               </Link>
             </div>
           </div>
-
           {/* Wishlist Content */}
           {wishlistProperties.length === 0 ? (
             <div className="text-center py-16">
@@ -101,7 +99,7 @@ const Wishlist = () => {
               </Link>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
               {wishlistProperties.map((property) => (
                 <Card key={property.id} className="overflow-hidden hover:shadow-lg transition-shadow duration-300 border-green-700">
                   <div className="relative">
@@ -181,10 +179,9 @@ const Wishlist = () => {
               ))}
             </div>
           )}
-
           {/* Quick Actions */}
           {wishlistProperties.length > 0 && (
-            <div className="mt-12 bg-white rounded-lg shadow-sm p-6">
+            <div className="mt-8 sm:mt-12 bg-white rounded-lg shadow-sm p-4 sm:p-6">
               <h3 className="text-lg font-semibold mb-4 text-black">Quick Actions</h3>
               <div className="flex flex-wrap gap-4">
                 <Button variant="outline" className="border-green-700 text-green-700 hover:bg-green-50">

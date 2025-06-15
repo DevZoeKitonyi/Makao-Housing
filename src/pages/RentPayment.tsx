@@ -89,8 +89,9 @@ const RentPayment = () => {
           </div>
         </div>
       </header>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {/* Responsive Wrapper */}
+      <div className="max-w-6xl mx-auto px-2 sm:px-4 lg:px-8 py-8 sm:py-12 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
           {/* Payment Form */}
           <div className="lg:col-span-2">
             <Card>
@@ -236,7 +237,6 @@ const RentPayment = () => {
               </CardContent>
             </Card>
           </div>
-
           {/* Rental Summary */}
           <div>
             <Card>
@@ -329,22 +329,22 @@ const RentPayment = () => {
         </div>
 
         {/* Steps Indicator */}
-        <div className="mt-12">
-          <div className="flex items-center justify-center">
-            <div className="flex items-center">
+        <div className="mt-10 sm:mt-12 px-2 sm:px-0">
+          <div className="flex flex-col xs:flex-row items-center justify-center space-y-2 xs:space-y-0 xs:space-x-2 sm:space-x-0 sm:flex-row">
+            <div className="flex items-center mb-2 xs:mb-0">
               <div className="bg-red-700 rounded-full h-8 w-8 flex items-center justify-center text-white">
                 1
               </div>
               <div className="ml-2 text-red-700 font-medium">Rental Details</div>
             </div>
-            <ChevronRight className="mx-4 text-gray-400" />
-            <div className="flex items-center">
+            <ChevronRight className="mx-2 xs:mx-4 text-gray-400 hidden xs:inline" />
+            <div className="flex items-center mb-2 xs:mb-0">
               <div className="bg-green-700 rounded-full h-8 w-8 flex items-center justify-center text-white">
                 2
               </div>
               <div className="ml-2 text-green-700 font-medium">Payment</div>
             </div>
-            <ChevronRight className="mx-4 text-gray-400" />
+            <ChevronRight className="mx-2 xs:mx-4 text-gray-400 hidden xs:inline" />
             <div className="flex items-center">
               <div className="bg-gray-300 rounded-full h-8 w-8 flex items-center justify-center text-gray-600">
                 3

@@ -52,8 +52,8 @@ const Receipt = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 flex flex-col">
-      <div className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 py-6 sm:py-12 flex flex-col">
+      <div className="flex-1 max-w-4xl mx-auto px-2 sm:px-4 lg:px-8 relative">
         {/* Header */}
         <div className="mb-8 text-center">
           <MakaoHeader />
@@ -180,7 +180,7 @@ const Receipt = () => {
         </Card>
 
         {/* Next Steps */}
-        <div className="text-center space-y-4">
+        <div className="text-center space-y-4 mb-12">
           <p>What would you like to do next?</p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link to="/dashboard">

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Eye, EyeOff, Home } from 'lucide-react';
@@ -74,7 +73,7 @@ const Register = () => {
   const [userType, setUserType] = useState('tenant');
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-red-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-red-50 flex items-center justify-center p-2 sm:p-4">
       <div className="w-full max-w-md">
         <AnimationWrapper>
           <MakaoHeader logoIcon={<Home className="h-8 w-8 text-green-700" />} title="Makao" />
@@ -250,4 +249,3 @@ const Register = () => {
 };
 
 export default Register;
-
