@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home, MapPin, Phone, Mail, Clock, ArrowRight } from 'lucide-react';
@@ -30,6 +31,7 @@ const Contact = () => {
               <Link to="/about" className="text-gray-700 hover:text-red-700">About</Link>
               <Link to="/services" className="text-gray-700 hover:text-red-700">Services</Link>
               <Link to="/contact" className="text-red-700 font-medium">Contact</Link>
+              <Link to="/notifications" className="text-gray-700 hover:text-red-700">Notifications</Link>
             </nav>
             <div className="hidden md:flex items-center space-x-4">
               <Link to="/login">
