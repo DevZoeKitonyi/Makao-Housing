@@ -71,9 +71,9 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-gray-900">Visit Us</h3>
                       <p className="text-gray-600">
-                        123 Real Estate St.<br/>
-                        City, State 12345<br/>
-                        United States
+                        Waiyaki Way,Westlands.<br/>
+                        City,Nairobi<br/>
+                        Kenya
                       </p>
                     </div>
                   </div>
@@ -84,8 +84,8 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-gray-900">Call Us</h3>
                       <p className="text-gray-600">
-                        Main: (555) 123-4567<br/>
-                        Support: (555) 987-6543
+                        Main: (254) 723-4567<br/>
+                        Support: (254) 787-6543
                       </p>
                     </div>
                   </div>
@@ -146,7 +146,7 @@ const Contact = () => {
                         <label htmlFor="name" className="block text-sm font-medium text-green-900 mb-1">
                           Your Name
                         </label>
-                        <Input id="name" placeholder="John Doe" />
+                        <Input id="name" placeholder="John Mutiso" />
                       </div>
                       <div>
                         <label htmlFor="email" className="block text-sm font-medium text-green-900 mb-1">
@@ -159,7 +159,7 @@ const Contact = () => {
                       <label htmlFor="phone" className="block text-sm font-medium text-green-900 mb-1">
                         Phone Number (Optional)
                       </label>
-                      <Input id="phone" placeholder="+1 (555) 123-4567" />
+                      <Input id="phone" placeholder="+1 (254) 123-4567" />
                     </div>
                     <div>
                       <label htmlFor="subject" className="block text-sm font-medium text-green-900 mb-1">
