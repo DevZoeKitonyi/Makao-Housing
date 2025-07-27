@@ -4,7 +4,8 @@ import { Search, MapPin, Home, Users, Star, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
-import AnimationWrapper from '@/components/AnimationWrapper';
+import { AnimationWrapper, Counter } from '@/components/AnimationWrapper';
+import { Testimonials } from '@/components/Testimonials';
 import MakaoNav from "@/components/MakaoNav";
 
 // Kenyan flag: black #000, red #d32f2f, green #388e3c, white accent
@@ -102,6 +103,44 @@ const Index = () => {
         </section>
       </AnimationWrapper>
 
+
+
+      
+      {/* Stats Section */}
+      
+<AnimationWrapper delay={600}>
+  <section className="py-16 bg-gray-100">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div className="text-4xl font-bold text-green-700 mb-2">
+            <Counter target={500} />
+          </div>
+          <div className="text-gray-600">Listed Properties</div>
+        </div>
+        <div>
+          <div className="text-4xl font-bold text-green-700 mb-2">
+            <Counter target={1200} />
+          </div>
+          <div className="text-gray-600">Happy Tenants</div>
+        </div>
+        <div>
+          <div className="text-4xl font-bold text-green-700 mb-2">
+            <Counter target={300} />
+          </div>
+          <div className="text-gray-600">Verified Landlords</div>
+        </div>
+        <div>
+          <div className="text-4xl font-bold text-green-700 mb-2">
+            <Counter target={50} />
+          </div>
+          <div className="text-gray-600">Cities Covered</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</AnimationWrapper>
+
       {/* Featured Properties */}
       <AnimationWrapper delay={400}>
         <section className="py-16 bg-white">
@@ -170,31 +209,8 @@ const Index = () => {
         </section>
       </AnimationWrapper>
 
-      {/* Stats Section */}
-      <AnimationWrapper delay={600}>
-        <section className="py-16 bg-gray-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <div>
-                <div className="text-4xl font-bold text-green-700 mb-2">500+</div>
-                <div className="text-gray-600">Listed Properties</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-green-700 mb-2">1,200+</div>
-                <div className="text-gray-600">Happy Tenants</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-green-700 mb-2">300+</div>
-                <div className="text-gray-600">Verified Landlords</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-green-700 mb-2">50+</div>
-                <div className="text-gray-600">Cities Covered</div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </AnimationWrapper>
+      
+    
 
       {/* Footer - Hidden on mobile */}
       <footer className="hidden md:block bg-black text-white py-12">
