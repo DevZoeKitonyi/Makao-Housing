@@ -19,11 +19,16 @@ export const Testimonials: React.FC = () => {
       text: "We truly appreciate your dedication to helping us buy our dream home in Nairobi.",
       author: "David M."
     },
-    {
-      id: 3,
-      text: "We appreciate the effort you made to find us an affordable house for sale in Nairobi. You are truly award-winning estate agents in Nairobi.",
-      author: "Sarah W."
-    }
+  {
+    id: 3,
+    text: "We appreciate the effort you made to find us an affordable house for sale in Nairobi. You are truly award-winning estate agents in Nairobi.",
+    author: "Sarah W."
+  },
+  {
+    id: 4,
+    text: "Thrilled with the effort you made to find us our dream house for us in Nairobi. You are truly award-winning estate agents in Nairobi.",
+    author: "George W."
+  }
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);

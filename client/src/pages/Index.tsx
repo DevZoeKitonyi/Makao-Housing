@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimationWrapper, Counter } from '@/components/AnimationWrapper';
-import { Testimonials } from '@/components/Testimonials';
+//import { Testimonials } from '@/components/Testimonials';
 import MakaoNav from "@/components/MakaoNav";
 
 // Kenyan flag: black #000, red #d32f2f, green #388e3c, white accent
@@ -141,6 +141,7 @@ const Index = () => {
   </section>
 </AnimationWrapper>
 
+
       {/* Featured Properties */}
       <AnimationWrapper delay={400}>
         <section className="py-16 bg-white">
@@ -209,7 +210,7 @@ const Index = () => {
         </section>
       </AnimationWrapper>
 
-      
+       
     
 
       {/* Footer - Hidden on mobile */}
