@@ -5,7 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimationWrapper, Counter } from '@/components/AnimationWrapper';
-//import { Testimonials } from '@/components/Testimonials';
+import { Testimonials } from '@/components/Testimonials';
+import { PopularLocations } from '@/components/PopularLocations';
 import MakaoNav from "@/components/MakaoNav";
 
 // Kenyan flag: black #000, red #d32f2f, green #388e3c, white accent
@@ -108,7 +109,7 @@ const Index = () => {
       
       {/* Stats Section */}
       
-<AnimationWrapper delay={600}>
+<AnimationWrapper delay={300}>
   <section className="py-16 bg-gray-100">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -210,7 +211,15 @@ const Index = () => {
         </section>
       </AnimationWrapper>
 
-       
+      {/* Popular Locations Section */}
+<AnimationWrapper delay={450}>
+  <PopularLocations />
+</AnimationWrapper>
+
+       {/* Testimonials Section */}
+<AnimationWrapper delay={500}>
+  <Testimonials />
+</AnimationWrapper>
     
 
       {/* Footer - Hidden on mobile */}
@@ -255,7 +264,7 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t border-green-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Makao. All rights reserved.</p>
+            <p>&copy; 2025 Makao. All rights reserved.</p>
           </div>
         </div>
       </footer>
