@@ -34,9 +34,15 @@ const MakaoFooter = () => (
                 Services
               </Link>
             </li>
+          
             <li>
               <Link to="/contact" className="text-gray-400 hover:text-green-400">
-                Contact
+                Contact Us
+              </Link>
+            </li>
+            <li>
+              <Link to="/privacy-policy" className="text-gray-400 hover:text-green-400">
+                PrivacyPolicy
               </Link>
             </li>
           </ul>

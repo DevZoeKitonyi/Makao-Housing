@@ -25,6 +25,8 @@ import Notifications from "./pages/Notifications";
 import DashboardNotifications from "./pages/DashboardNotifications";
 import DashboardTenants from "./pages/DashboardTenants";
 import DashboardProperties from "./pages/DashboardProperties";
+import { PrivacyPolicy } from "./pages/PrivacyPolicy";
+
 
 const queryClient = new QueryClient();
 
@@ -54,6 +56,8 @@ const App = () => (
             <Route path="/notifications" element={<Notifications />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="/contact" element={<Contact />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

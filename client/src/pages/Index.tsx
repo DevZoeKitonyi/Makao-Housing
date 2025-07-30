@@ -216,6 +216,26 @@ const Index = () => {
   <PopularLocations />
 </AnimationWrapper>
 
+
+
+
+
+  <div className="bg-green-50 rounded-lg shadow p-6 text-center">
+    <img
+      src="/placeholder.svg"
+      alt="Makao Founder"
+      className="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-green-700 object-cover"
+    />
+    <h3 className="text-xl font-bold text-black">Brian Kitonyi</h3>
+    <p className="text-green-700 text-sm font-medium mb-2">Founder & CEO</p>
+    <p className="text-gray-600">
+      Driven by the desire to simplify property rental for Kenyans, Jane
+      founded Makao to connect reliable tenants with trusted landlords
+      using technology tailored for our local needs.
+    </p>
+  </div>
+);
+
        {/* Testimonials Section */}
 <AnimationWrapper delay={500}>
   <Testimonials />
