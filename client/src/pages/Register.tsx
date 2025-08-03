@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
-import AnimationWrapper from "@/components/AnimationWrapper";
+import {AnimationWrapper} from "@/components/AnimationWrapper";
 import MakaoHeader from "@/components/MakaoHeader";
 
 const Register = () => {
