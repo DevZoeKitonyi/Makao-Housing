@@ -106,41 +106,7 @@ const Index = () => {
 
 
 
-      
-      {/* Stats Section */}
-      
-<AnimationWrapper delay={300}>
-  <section className="py-16 bg-gray-100">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        <div>
-          <div className="text-4xl font-bold text-green-700 mb-2">
-            <Counter target={500} />
-          </div>
-          <div className="text-gray-600">Listed Properties</div>
-        </div>
-        <div>
-          <div className="text-4xl font-bold text-green-700 mb-2">
-            <Counter target={1200} />
-          </div>
-          <div className="text-gray-600">Happy Tenants</div>
-        </div>
-        <div>
-          <div className="text-4xl font-bold text-green-700 mb-2">
-            <Counter target={300} />
-          </div>
-          <div className="text-gray-600">Verified Landlords</div>
-        </div>
-        <div>
-          <div className="text-4xl font-bold text-green-700 mb-2">
-            <Counter target={50} />
-          </div>
-          <div className="text-gray-600">Cities Covered</div>
-        </div>
-      </div>
-    </div>
-  </section>
-</AnimationWrapper>
+    
 
 
       {/* Featured Properties */}
@@ -216,6 +182,26 @@ const Index = () => {
   <PopularLocations />
 </AnimationWrapper>
 
+
+
+
+
+  <div className="bg-green-50 rounded-lg shadow p-6 text-center">
+    <img
+      src="/placeholder.svg"
+      alt="Makao Founder"
+      className="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-green-700 object-cover"
+    />
+    <h3 className="text-xl font-bold text-black">Brian Kitonyi</h3>
+    <p className="text-green-700 text-sm font-medium mb-2">Founder & CEO</p>
+    <p className="text-gray-600">
+      Driven by the desire to simplify property rental for Kenyans, Jane
+      founded Makao to connect reliable tenants with trusted landlords
+      using technology tailored for our local needs.
+    </p>
+  </div>
+);
+
        {/* Testimonials Section */}
 <AnimationWrapper delay={500}>
   <Testimonials />
@@ -242,6 +228,7 @@ const Index = () => {
                 <li><Link to="/about" className="text-gray-400 hover:text-green-400">About Us</Link></li>
                 <li><Link to="/services" className="text-gray-400 hover:text-green-400">Services</Link></li>
                 <li><Link to="/contact" className="text-gray-400 hover:text-green-400">Contact</Link></li>
+                <li><Link to="/privacy-policy" className="text-gray-400 hover:text-green-400">Privacy Policy</Link></li>
               </ul>
             </div>
             <div>

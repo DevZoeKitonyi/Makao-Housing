@@ -232,6 +232,7 @@ const Contact = () => {
                 <li><Link to="/about" className="text-gray-400 hover:text-green-400">About Us</Link></li>
                 <li><Link to="/services" className="text-gray-400 hover:text-green-400">Services</Link></li>
                 <li><Link to="/contact" className="text-gray-400 hover:text-green-400">Contact</Link></li>
+                <li><Link to="/privacy-policy" className="text-gray-400 hover:text-green-400">Privacy Policy</Link></li>
               </ul>
             </div>
             <div>
@@ -254,7 +255,7 @@ const Contact = () => {
             </div>
           </div>
           <div className="border-t border-green-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Makao. All rights reserved.</p>
+            <p>&copy; 2025 Makao. All rights reserved.</p>
           </div>
         </div>
       </footer>
