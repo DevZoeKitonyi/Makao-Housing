@@ -186,21 +186,52 @@ const Index = () => {
 
 
 
-  <div className="bg-green-50 rounded-lg shadow p-6 text-center">
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-green-50 rounded-lg shadow-lg">
+  {/* Founder */}
+  <div className="bg-white rounded-lg shadow-md p-6 text-center hover:transform hover:scale-105 transition-transform">
     <img
-      src="/placeholder.svg"
-      alt="Makao Founder"
+      src="/brian-kitonyi.jpg" // Replace with actual image
+      alt="Brian Kitonyi"
       className="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-green-700 object-cover"
     />
     <h3 className="text-xl font-bold text-black">Brian Kitonyi</h3>
     <p className="text-green-700 text-sm font-medium mb-2">Founder & CEO</p>
-    <p className="text-gray-600">
-      Driven by the desire to simplify property rental for Kenyans, Jane
-      founded Makao to connect reliable tenants with trusted landlords
-      using technology tailored for our local needs.
+    <p className="text-gray-600 text-sm">
+      Driven by the desire to simplify property rental for Kenyans, Brian founded Makao to connect reliable tenants with trusted landlords using locally tailored tech.
     </p>
   </div>
-);
+
+  {/* Co-Founder */}
+  <div className="bg-white rounded-lg shadow-md p-6 text-center hover:transform hover:scale-105 transition-transform">
+    <img
+      src="/co-founder.jpg" // Replace with actual image
+      alt="Co-Founder"
+      className="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-green-500 object-cover"
+    />
+    <h3 className="text-xl font-bold text-black">Sarah Mwangi</h3>
+    <p className="text-green-700 text-sm font-medium mb-2">Co-Founder & COO</p>
+    <p className="text-gray-600 text-sm">
+      Real estate strategist with 10+ years in Kenyan property markets. Focused on operational excellence and scaling Makao's impact.
+    </p>
+  </div> {/* This closing div was missing */}
+
+  {/* CTO/Head of Growth*/}
+  <div className="bg-white rounded-lg shadow-md p-6 text-center hover:transform hover:scale-105 transition-transform">
+    <img
+      src="/tech-lead.jpg" // Replace with actual image
+      alt="Tech Lead"
+      className="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-green-300 object-cover"
+    />
+    <h3 className="text-xl font-bold text-black">David Omondi</h3>
+    <p className="text-green-700 text-sm font-medium mb-2">Head of Product</p>
+    <p className="text-gray-600 text-sm">
+      Built scalable proptech solutions for East Africa. Leads Makao's tech innovation to solve real housing pain points.
+    </p>
+  </div>
+</div>
+
+  {/* About Section */}
+
 
        {/* Testimonials Section */}
 <AnimationWrapper delay={500}>
@@ -257,6 +288,6 @@ const Index = () => {
       </footer>
     </div>
   );
-};
 
+}
 export default Index;
