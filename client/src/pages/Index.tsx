@@ -106,7 +106,105 @@ const Index = () => {
 
 
 
+
+
+
+
+
+    {/* Stats Section */}
+      
+<AnimationWrapper delay={300}>
+  <section className="py-16 bg-gray-100">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div className="text-4xl font-bold text-green-700 mb-2">
+            <Counter target={500} />
+          </div>
+          <div className="text-gray-600">Listed Properties</div>
+        </div>
+        <div>
+          <div className="text-4xl font-bold text-green-700 mb-2">
+            <Counter target={1200} />
+          </div>
+          <div className="text-gray-600">Happy Tenants</div>
+        </div>
+        <div>
+          <div className="text-4xl font-bold text-green-700 mb-2">
+            <Counter target={300} />
+          </div>
+          <div className="text-gray-600">Verified Landlords</div>
+        </div>
+        <div>
+          <div className="text-4xl font-bold text-green-700 mb-2">
+            <Counter target={50} />
+          </div>
+          <div className="text-gray-600">Cities Covered</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</AnimationWrapper>
+
+
+
+{/* Awards & Recognition Section */}
+<AnimationWrapper delay={350}>
+  <section className="py-16 relative overflow-hidden">
+    {/* Kenyan flag gradient background */}
+    <div className="absolute inset-0 bg-gradient-to-r from-black via-red-700 to-green-700 opacity-10 -skew-y-2 z-0"></div>
     
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="flex flex-col md:flex-row items-center gap-8">
+        {/* Trophy Image */}
+        <div className="w-full md:w-1/3 flex justify-center">
+          <div className="relative">
+            <img 
+              src="https://cdn-icons-png.flaticon.com/512/3132/3132735.png" // Trophy icon
+              alt="Award Winner"
+              className="w-48 h-48 object-contain"
+            />
+            {/* Kenyan flag badge on trophy */}
+            <div className="absolute -bottom-2 -right-2 bg-gradient-to-br from-black via-red-700 to-green-700 rounded-full p-2 shadow-lg">
+              <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="w-full md:w-2/3 text-center md:text-left">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <span className="text-green-700">East Africa's</span>{" "}
+            <span className="text-black">Leading Housing Solution</span>
+          </h2>
+          
+          <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-700">
+            <p className="text-lg text-gray-700 mb-4">
+              Makao has been recognized as the <span className="font-bold text-green-700">#1 Proptech Startup</span> in Kenya and among the top housing platforms in East Africa, transforming how people find and manage homes across the region.
+            </p>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <div className="bg-green-50 p-3 rounded">
+                <div className="text-2xl font-bold text-green-700">2024</div>
+                <div className="text-sm">Best Housing Platform</div>
+              </div>
+              <div className="bg-red-50 p-3 rounded">
+                <div className="text-2xl font-bold text-red-700">10K+</div>
+                <div className="text-sm">Successful Matches</div>
+              </div>
+              <div className="bg-black text-white p-3 rounded">
+                <div className="text-2xl font-bold">5+</div>
+                <div className="text-sm">Countries Served</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </AnimationWrapper>
 
 
       {/* Featured Properties */}
@@ -184,8 +282,7 @@ const Index = () => {
 
 
 
-
-
+{/*Team Section*/}
  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-green-50 rounded-lg shadow-lg">
   {/* Founder */}
   <div className="bg-white rounded-lg shadow-md p-6 text-center hover:transform hover:scale-105 transition-transform">

@@ -81,7 +81,7 @@ export const Counter: React.FC<CounterProps> = ({ target, duration = 2000, class
         });
       },
       {
-        threshold: 0.4, // Trigger when 10% of the element is visible
+        threshold: 0.1, // Trigger when 10% of the element is visible
       }
     );
 

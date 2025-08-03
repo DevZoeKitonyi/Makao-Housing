@@ -165,23 +165,7 @@ export const Testimonials = () => {
           </div>
         </div>
         
-        {/* Stats Section */}
-        <div className="mt-20 bg-green-800 rounded-xl p-8 text-white">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="p-4">
-              <div className="text-5xl font-bold mb-2">5,000+</div>
-              <div className="text-green-200">Happy Clients</div>
-            </div>
-            <div className="p-4">
-              <div className="text-5xl font-bold mb-2">98%</div>
-              <div className="text-green-200">Satisfaction Rate</div>
-            </div>
-            <div className="p-4">
-              <div className="text-5xl font-bold mb-2">15+</div>
-              <div className="text-green-200">Nairobi Areas Covered</div>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </section>
   );
