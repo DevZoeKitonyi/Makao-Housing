@@ -5,6 +5,9 @@ const morgan = require ('morgan');
 const connectDB = require('./config/db');
 const dotenv = require('dotenv');
 const propertyRoutes = require('./routes/property.routes');
+const authRoutes = require('./routes/auth.routes');
+const adminRoutes = require('./routes/admin.routes.js');
+const supportRoutes = require('./routes/support.routes.js');
 
 import type MessageResponse from "./interfaces/message-response.js";
 
@@ -28,6 +31,10 @@ app.get("/", (req: Request, res: Response<MessageResponse>) => {
 
 app.use("/api/v1", api);
 app.use('/api/properties', propertyRoutes);
+app.use('./api/auth', authRoutes);
+app.use('/uploads', express.static('uploads'));
+app.use('/api/admin', adminRoutes);
+app.use('./api/support', supportRoutes);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
