@@ -4,6 +4,8 @@ import type ErrorResponse from "./interfaces/error-response.js";
 
 import { env } from "./env.js";
 
+import Notification from '../models/notification.model';
+
 export function notFound(req: Request, res: Response, next: NextFunction) {
   res.status(404);
   const error = new Error(`🔍 - Not Found - ${req.originalUrl}`);
@@ -18,3 +20,14 @@ export function errorHandler(err: Error, req: Request, res: Response<ErrorRespon
     stack: env.NODE_ENV === "production" ? "🥞" : err.stack,
   });
 }
+
+export const checkUnreadNotifications = async (req: Request, res: Response, next: NextFunction) => {
+  if (req.user) {
+    const unreadCount = await Notification.countDocuments({ 
+      userId: req.user.id, 
+      isRead: false 
+    });
+    res.locals.unreadNotifications = unreadCount;
+  }
+  next();
+};
