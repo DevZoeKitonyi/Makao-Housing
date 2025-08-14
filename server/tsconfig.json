@@ -14,5 +14,5 @@
     "./*.js",
     "src/**/*.ts",
     "test/**/*.ts"
-  ]
+, "src/routes/notifications.js"  ]
 }
